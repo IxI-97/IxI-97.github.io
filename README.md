@@ -138,7 +138,7 @@ the peaks fragmentation spectra looking for a match in the MONA, MassBank, and H
 ones retrieved in the. Mzml files are saved in the output folder. Each peak annotation detected in the
 MS2 will automatically replace one obtained in MS1.
 
-![alt text](https://github.com/IxI-97/IxI-97.github.io/blob/main/Metabolomics2.svg?raw=true)
+- ![alt text](https://github.com/IxI-97/IxI-97.github.io/blob/main/Metabolomics3.svg?raw=true)
 
 The significant metabolites increased and reduced are displayed in a volcano plot while a
 logarithmic transformation is applied to the peak signal matrix for MOFA integration. To unveil the

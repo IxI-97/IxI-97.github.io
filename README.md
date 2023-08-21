@@ -88,7 +88,7 @@ It happens during the conda installation "step 2" because the python installed i
 BiomiX analyses the expression matrix to quantify the expression difference between two groups of samples discriminating automatically between raw counts, analyzed using the Deseq package, and normalized counts, analyzed by Limma package. Biomix requires an expression matrix **Msg** where the columns **s** represent the samples while the rows **g** contain the genes in Ensembl or gene names format. The analysis highlights the differentially expressed genes (DEG), their Log2FC and p.adj plus pff reports containing volcano plots, heatmaps and gene variances. If sex and gender are available in the metadata these will be automatically used to correct the Deseq2 or Limma model. The default thresholds to consider the differentially expressed genes were set to Log2FC > 0.5 and p.adj < 0.05. The p.value has been adjusted using the False Discovery Rate (FDR) method. The enrichment of biological process in the results is explored in the R version of EnrichR. Moreover, pre-treated output files are produced to carry out the gene set enrichment analysis using GSEA or EnrichR. The expression matrix is also normalizalized by variance stabilizing transformation (vst) for data visualization and MOFA integration
 
 <div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Transcriptomics2.svg">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Transcriptomics2.svg?raw=true">
 </div>
 
   - **Additional features**
@@ -118,13 +118,13 @@ IFI44L
   - - **EnrichR**: It is possible to copy the gene list provided in the results to obtain the enrichment of the biological pathways direct in EnrichR webtool: https://maayanlab.cloud/Enrichr/.
 
 <div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/enrichR.svg">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/enrichR.svg?raw=true">
 </div>
 
   - - **GSEA**: It is possible to upload the gene matrix and the metadata information pre-processed by BiomiX to run a GSEA analysis: https://www.gsea-msigdb.org/gsea/index.jsp.
 
  <div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/GSEA2.svg">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/GSEA2.svg?raw=true">
 </div>
 
 TEST Go to [about page](about.md)
@@ -153,7 +153,7 @@ ones retrieved in the. Mzml files are saved in the output folder. Each peak anno
 MS2 will automatically replace one obtained in MS1.
 
  <div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Metabolomics3.svg">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Metabolomics3.svg?raw=true">
 </div>
 
 The significant metabolites increased and reduced are displayed in a volcano plot while a

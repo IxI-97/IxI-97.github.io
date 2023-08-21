@@ -87,8 +87,6 @@ It happens during the conda installation "step 2" because the python installed i
 
 BiomiX analyses the expression matrix to quantify the expression difference between two groups of samples discriminating automatically between raw counts, analyzed using the Deseq package, and normalized counts, analyzed by Limma package. Biomix requires an expression matrix **Msg** where the columns **s** represent the samples while the rows **g** contain the genes in Ensembl or gene names format. The analysis highlights the differentially expressed genes (DEG), their Log2FC and p.adj plus pff reports containing volcano plots, heatmaps and gene variances. If sex and gender are available in the metadata these will be automatically used to correct the Deseq2 or Limma model. The default thresholds to consider the differentially expressed genes were set to Log2FC > 0.5 and p.adj < 0.05. The p.value has been adjusted using the False Discovery Rate (FDR) method. The enrichment of biological process in the results is explored in the R version of EnrichR. Moreover, pre-treated output files are produced to carry out the gene set enrichment analysis using GSEA or EnrichR. The expression matrix is also normalizalized by variance stabilizing transformation (vst) for data visualization and MOFA integration
 
-![alt text](https://github.com/IxI-97/IxI-97.github.io/blob/main/Transcriptomics2.svg?raw=true)
-
 <div align="center">
     <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Transcriptomics2.svg">
 </div>
@@ -113,11 +111,21 @@ IFI44L
    analysis comparing the chosen controls and these two groups.
     - **Subgrouping comparison with other clinical/biological data**: It is possible to add a column named **MARKER** in the metadata containing the classification according to clinical or biological analysis on the samples. This marker can be compared to the subgrouping obtained from the user gene panel to observe similarities or differences.
 
-  - - ![alt text](https://github.com/IxI-97/IxI-97.github.io/blob/main/Heatmap_BLymphocytes_CTRL_vs_SLE2.svg?raw=true)
+<div align="center">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Heatmap_BLymphocytes_CTRL_vs_SLE2.svg">
+</div>
+
   - - **EnrichR**: It is possible to copy the gene list provided in the results to obtain the enrichment of the biological pathways direct in EnrichR webtool: https://maayanlab.cloud/Enrichr/.
-  ![alt text](https://github.com/IxI-97/IxI-97.github.io/blob/main/enrichR.svg?raw=true)
-    - **GSEA**: It is possible to upload the gene matrix and the metadata information pre-processed by BiomiX to run a GSEA analysis: https://www.gsea-msigdb.org/gsea/index.jsp.
-  ![alt text](https://github.com/IxI-97/IxI-97.github.io/blob/main/GSEA2.svg?raw=true)
+
+<div align="center">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/enrichR.svg">
+</div>
+
+  - - **GSEA**: It is possible to upload the gene matrix and the metadata information pre-processed by BiomiX to run a GSEA analysis: https://www.gsea-msigdb.org/gsea/index.jsp.
+
+ <div align="center">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/GSEA2.svg">
+</div>
 
 TEST Go to [about page](about.md)
 

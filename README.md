@@ -88,7 +88,7 @@ It happens during the conda installation "step 2" because the python installed i
 BiomiX analyses the expression matrix to quantify the expression difference between two groups of samples discriminating automatically between raw counts, analyzed using the Deseq package, and normalized counts, analyzed by Limma package. Biomix requires an expression matrix **Msg** where the columns **s** represent the samples while the rows **g** contain the genes in Ensembl or gene names format. The analysis highlights the differentially expressed genes (DEG), their Log2FC and p.adj plus pff reports containing volcano plots, heatmaps and gene variances. If sex and gender are available in the metadata these will be automatically used to correct the Deseq2 or Limma model. The default thresholds to consider the differentially expressed genes were set to Log2FC > 0.5 and p.adj < 0.05. The p.value has been adjusted using the False Discovery Rate (FDR) method. The enrichment of biological process in the results is explored in the R version of EnrichR. Moreover, pre-treated output files are produced to carry out the gene set enrichment analysis using GSEA or EnrichR. The expression matrix is also normalizalized by variance stabilizing transformation (vst) for data visualization and MOFA integration
 
 <div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Transcriptomics2.svg?raw=true">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Transcriptomics.svg?raw=true">
 </div>
 
   - **Additional features**
@@ -153,7 +153,7 @@ ones retrieved in the. Mzml files are saved in the output folder. Each peak anno
 MS2 will automatically replace one obtained in MS1.
 
  <div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Metabolomics3.svg?raw=true">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Metabolomics.svg?raw=true">
 </div>
 
 The significant metabolites increased and reduced are displayed in a volcano plot while a
@@ -172,6 +172,10 @@ Biomix requires an expression matrix Msg where the columns s represent the sampl
 Differential methylation analysis (DMA) is performed using the ChAMP database, providing the
 results of the CpG island hypermethylated and hypomethylated with a volcano plot. The threshold
 has been set as default to the beta value change (Δbeta) > |0.15| and p.adj < 0.05.
+
+ <div align="center">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Methylomics.svg?raw=true">
+</div>
 
 ### MOFA integration
 
@@ -193,6 +197,10 @@ calculated factor in each model is determined how it can discriminate statistica
 groups. A non-parametric Mann-Whitney test tests the factor value distribution between the two
 groups of samples correcting the p.values through the FDR method. The models selected are the
 ones with the higher number of discriminating MOFA factors, and later comparing the p.adj values.
+
+ <div align="center">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/disegno.svg?raw=true">
+</div>
 
 ### MOFA factors interpretation
 
@@ -231,3 +239,7 @@ by another vocabulary made up from gene set names as GO biological process (7751
 Human Phenotype Ontology (5405 gene sets). The most frequent 15 words are included in the
 output Excel file. To conclude, the same analysis is repeated again, including all the abstracts
 retrieved within the three-level.
+
+ <div align="center">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/MOFA.svg?raw=true">
+</div>

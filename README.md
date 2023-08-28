@@ -82,7 +82,7 @@ This user-friendly tool, based on R is compatible for Linux and Microsoft OS, an
 #### **ModuleNotFoundError: No module named 'package name'** 
 It happens during the conda installation "step 2" because the python installed in your computer doesn't have. Can be fixed typing in the terminal: **pip install 'package name'**
 
-TEST Go to [about page](about.md)
+TEST Go to [Installation page](Installation.md)
 
 TEST Go to [Single-omics_analysis page](Single-omics_analysis.md)
 

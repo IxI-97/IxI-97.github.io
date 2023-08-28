@@ -81,6 +81,9 @@ This user-friendly tool, based on R is compatible for Linux and Microsoft OS, an
 ### Troubleshooting
 #### **ModuleNotFoundError: No module named 'package name'** 
 It happens during the conda installation "step 2" because the python installed in your computer doesn't have. Can be fixed typing in the terminal: **pip install 'package name'**
+
+TEST Go to [about page](about.md)
+TEST Go to [Single-omics analysis page](Single-omics analysis.md)
   
 ## Single-omics analysis
 ### Transcriptomics
@@ -126,8 +129,6 @@ IFI44L
  <div align="center">
     <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/GSEA2.svg?raw=true">
 </div>
-
-TEST Go to [about page](about.md)
 
 ### Metabolomics
 

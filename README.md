@@ -84,7 +84,7 @@ It happens during the conda installation "step 2" because the python installed i
 
 TEST Go to [about page](about.md)
 
-TEST Go to [Single-omics analysis page](Single-omics_analysis.md)
+TEST Go to [Single-omics_analysis page](Single-omics_analysis.md)
   
 ## Single-omics analysis
 ### Transcriptomics

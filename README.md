@@ -241,5 +241,5 @@ output Excel file. To conclude, the same analysis is repeated again, including a
 retrieved within the three-level.
 
  <div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/MOFA.svg?raw=true">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/MOFA2.svg?raw=true">
 </div>

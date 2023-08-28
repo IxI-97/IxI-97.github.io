@@ -1,0 +1,50 @@
+<h2 id="installation">Installation</h2>
+<h3 id="linux-os">Linux OS</h3>
+<ol>
+<li>Download Biomix from the github page and decompress it. The installation in the home directory is suggested. From bash type<pre><code><span class="hljs-selector-tag">cd</span>
+<span class="hljs-selector-tag">wget</span> <span class="hljs-selector-tag">linktothelatestBiomiXversion</span>
+<span class="hljs-selector-tag">tar</span> <span class="hljs-selector-tag">-xvzf</span> <span class="hljs-selector-tag">Biomix1</span><span class="hljs-selector-class">.5</span><span class="hljs-selector-class">.tar</span><span class="hljs-selector-class">.gz</span>
+</code></pre></li>
+<li>BiomiX uses conda to install the r and python package dependencies. 
+Install conda from the website: <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a> or type on the bash <pre><code>wget http<span class="hljs-variable">s:</span>//repo.anaconda.<span class="hljs-keyword">com</span>/miniconda/Miniconda3-py310_23.<span class="hljs-number">3.1</span>-<span class="hljs-number">0</span>-Linux-x86_64.<span class="hljs-keyword">sh</span>
+bash Miniconda3-py310_23.<span class="hljs-number">3.1</span>-<span class="hljs-number">0</span>-Linux-x86_64.<span class="hljs-keyword">sh</span>
+</code></pre></li>
+<li><p>Follow the instructions, selecting conda init = yes. Close and reopen the bash terminal.</p>
+</li>
+<li><p>Create your BiomiX environment (BiomiX-env) in conda typing on the bash</p>
+<pre><code>conda create -n BiomiX-env python=<span class="hljs-number">3.9</span> r-base=<span class="hljs-number">4.2</span><span class="hljs-number">.0</span> r-essentials
+</code></pre></li>
+<li>Activate your BiomiX environment<pre><code>conda <span class="hljs-built_in">activate</span> BiomiX-env
+</code></pre></li>
+<li>Run the BiomiX_INSTALL Python script<pre><code><span class="hljs-keyword">python3</span> path/<span class="hljs-keyword">to</span>/BiomiX1.<span class="hljs-number">7</span>/_INSTALL/BiomiX_INSTALL.<span class="hljs-keyword">py</span>
+</code></pre></li>
+<li>Enjoy BiomiX!</li>
+</ol>
+<h3 id="windows-os">Windows OS</h3>
+<ol>
+<li>Download Biomix from the github page and decompress it (by application e.i Winzip or terminal cmd). The installation in the home directory is suggest.
+If using the windows terminal type<pre><code><span class="hljs-selector-tag">cd</span>
+<span class="hljs-selector-tag">wget</span> <span class="hljs-selector-tag">linktothelatestBiomiXversion</span>
+<span class="hljs-selector-tag">tar</span> <span class="hljs-selector-tag">-xvzf</span> <span class="hljs-selector-tag">Biomix1</span><span class="hljs-selector-class">.5</span><span class="hljs-selector-class">.tar</span><span class="hljs-selector-class">.gz</span>
+</code></pre></li>
+<li><p>BiomiX uses conda to install the r and python package dependencies. 
+Install conda from the website <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a></p>
+</li>
+<li><p>Follow the installation instructions</p>
+</li>
+<li><p>Open the search in Windows taskbar the application &quot;Anaconda powershell prompt&quot;</p>
+</li>
+<li><p>Create your BiomiX environment (BiomiX-env) in conda typing on the conda powershell</p>
+<pre><code>conda create -n BiomiX-<span class="hljs-keyword">env</span> <span class="hljs-keyword">python</span>=<span class="hljs-number">3.9</span>
+</code></pre></li>
+<li>Activate your BiomiX environment<pre><code>conda <span class="hljs-built_in">activate</span> BiomiX-env
+</code></pre></li>
+<li>Install R and igraph package.<pre><code>conda install -c conda-forge r-base=<span class="hljs-number">4.1</span><span class="hljs-number">.3</span>
+</code></pre></li>
+<li>Run the BiomiX_INSTALL Python script clicking on it or typing in the conda powershell<pre><code><span class="hljs-keyword">python</span> path/<span class="hljs-keyword">to</span>/BiomiX1.<span class="hljs-number">5</span>/_INSTALL/BiomiX_INSTALL.<span class="hljs-keyword">py</span>
+</code></pre></li>
+<li>Enjoy BiomiX!</li>
+</ol>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<h4 id="-modulenotfounderror-no-module-named-package-name-"><strong>ModuleNotFoundError: No module named &#39;package name&#39;</strong></h4>
+<p>It happens during the conda installation &quot;step 2&quot; because the python installed in your computer doesn&#39;t have. Can be fixed typing in the terminal: <strong>pip install &#39;package name&#39;</strong></p>

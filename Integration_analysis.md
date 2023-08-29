@@ -1,5 +1,6 @@
-### MOFA integration
+## MOFA integration
 
+### MOFA analysis
 MOFA was used according to the webpage developer indications
 (https://biofam.github.io/MOFA2/) with normalized input data and reduced feature size. The
 transcriptome data are normalized by the Variance Stabilising Transformation (VST) function in R

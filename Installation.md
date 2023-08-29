@@ -55,6 +55,7 @@
   7. Install R and igraph package.
 ```
   conda install -c conda-forge r-base=4.1.3
+  conda install -c conda-forge r-igraph
 ```
   8. Run the BiomiX_INSTALL Python script clicking on it or typing in the conda powershell
 ```

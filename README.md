@@ -10,9 +10,9 @@ BiomiX carries out the analysis highlighting the most important features for eac
 
 This user-friendly tool, based on R is compatible for Linux and Microsoft OS, and aim to make accessible the multiomics analysis to users not expert in bioinformatics.
 
-- Go to [Installation page](Installation.md)
-- Go to [Single-omics analysis page](Single-omics_analysis.md)
-- Go to [Integration analysis page](Integration_analysis.md)
+- Go to [Installation section](Installation.md)
+- Go to [Single-omics analysis section](Single-omics_analysis.md)
+- Go to [Integration analysis section](Integration_analysis.md)
 
 
 ![alt text](https://github.com/IxI-97/IxI-97.github.io/blob/main/BiomiX_visual4.png?raw=true)

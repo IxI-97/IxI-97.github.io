@@ -18,7 +18,11 @@
 ```
   ./path/to/BiomiX2.2/_INSTALL/BiomiX_INSTALL_LINUX.sh
 ```
-  5. Enjoy BiomiX!
+  5. Run the Biomix_exe.sh script within the BiomiX2.2 folder to open BiomiX and start your analysis.
+```
+  ./path/to/BiomiX2.2/Biomix_exe.sh
+```
+  6. Enjoy BiomiX!
 
 
 ### Windows OS
@@ -38,7 +42,9 @@
 
   5. Double click in the BiomiX_INSTALL_WINDOWS.bat script within the _INSTALL folder.
 
-  5. Enjoy BiomiX!
+  6. Double click on the Biomix_exe.bat script within the BiomiX2.2 folder to open BiomiX and start your analysis.
+
+  7. Enjoy BiomiX!
    
 ### Troubleshooting
 #### **ModuleNotFoundError: No module named 'package name'** 

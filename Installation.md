@@ -44,4 +44,4 @@
 #### **ModuleNotFoundError: No module named 'package name'** 
 It happens during the conda installation "step 2" because the python installed in your computer doesn't have. Can be fixed typing in the terminal: **pip install 'package name'**
 #### BiomiX_INSTALL_WINDOWS.bat or BiomiX_INSTALL_LINUX.sh not working
-It can happen that because of different package already installed something conflic can arise. We suggest you to visit the - Go to [alternative installation guide](Alternative_Installation.md), for a step by step installation.
+It can happen that because of different package already installed something conflic can arise. We suggest you to visit the [alternative installation guide](Alternative_Installation.md), for a step by step installation.

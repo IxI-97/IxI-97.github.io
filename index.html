@@ -1,0 +1,272 @@
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+   <title>BiomiX</title>
+   <!-- Add your other head content here -->
+
+   <!-- Styles for the banner and content -->
+   <style>
+      body {
+         margin: 0;
+         padding: 0;
+         font-family: 'Lato', sans-serif;
+      }
+
+      .banner {
+         background-color: #3498db; /* Blue background color */
+         padding: 10px;
+         text-align: left;
+         color: white;
+      }
+
+      .banner a {
+         color: white;
+         margin-right: 15px;
+         text-decoration: none;
+      }
+
+      .header-section {
+         font-family: Arial, sans-serif;
+         text-align: center;
+         position: relative;
+         background-color: #f1f1f1; /* Light gray background color */
+         margin-bottom: 20px;
+      }
+
+      .header-section figure {
+         margin: 0;
+         position: relative;
+         overflow: hidden; /* Ensure the image does not overflow */
+      }
+
+      .header-section img {
+         width: 100%;
+         height: 50vh; /* 50% of the viewport height */
+         object-fit: cover; /* Cover the entire figure with the image */
+         display: block;
+      }
+
+      .header-overlay {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         color: white;
+         text-align: center;
+         width: 100%;
+         padding: 20px;
+         box-sizing: border-box;
+      }
+
+      .header-overlay h1 {
+         font-size: 60px; /* Adjust the font size as needed */
+         margin-bottom: 10px;
+      }
+
+      .header-overlay p {
+         font-size: 20px;
+         margin-bottom: 20px;
+      }
+
+      .install-button {
+         display: inline-block;
+         padding: 15px 30px;
+         background-color: #ffd700;
+         text-decoration: none;
+         border-radius: 5px;
+         font-size: 18px;
+         color: white; /* Text color */
+      }
+
+      .content-section {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 20px;
+         box-sizing: border-box;
+      }
+
+      .content-section .text-content {
+         flex: 1;
+         padding-right: 20px;
+      }
+
+      .content-section .text-content h2 {
+         font-size: 30px;
+         color: #3498db; /* Blue color for title */
+         font-weight: bold;
+         margin-left: 60px; /* Adjust the left margin of the text */
+         text-align: center; /* Center the content */
+      }
+
+      .content-section .text-content p {
+         font-size: 22px;
+         margin-left: 60px; /* Adjust the left margin of the text */
+         text-align: center; /* Center the content */
+      }
+
+      .content-section .image-content {
+         flex: 1;
+         max-width: 600px; /* Limit the width of the figure */
+         margin-right: 50px; /* Adjust the left margin of the figure */
+
+      }
+
+      .content-section .image-content img {
+         width: 100%;
+         height: auto;
+      }
+
+      .inline-figures {
+         display: flex;
+         justify-content: space-between;
+         margin-bottom: 10px; /* Reduced separation between inline figures */
+      }
+
+      .inline-figure {
+         flex: 1;
+         max-width: 400px; /* Increase the width of each inline figure */
+         text-align: center; /* Center the content */
+         margin: 20px; /* Add margin to each inline figure */
+      }
+
+      .inline-figure:first-child {
+         margin-left: 100px; /* Adjust the left margin of the first figure */
+      }
+
+      .inline-figure:last-child {
+         margin-right: 100px; /* Adjust the right margin of the last figure */
+      }
+
+      .inline-figure img {
+         width: 100%;
+         height: 300px;
+      }
+
+      .inline-figure h2 {
+         font-size: 20px;
+         color: #3498db; /* Blue color for title */
+         font-weight: bold;
+      }
+
+      .inline-figure p {
+         font-size: 14px;
+         max-width: 400px; /* Adjust the max-width as needed */
+         text-align: center; /* Center the content */
+         margin: 0px; /* Add margin to each inline figure */
+      }
+      
+      .final-content {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 50px;
+         box-sizing: border-box;
+      }
+
+      .final-content .text-content {
+         flex: 1;
+         padding-left: 50px; /* Add left padding to create space between image and text */
+      }
+
+      .final-content .text-content h2 {
+         font-size: 30px;
+         color: #3498db; /* Blue color for title */
+         font-weight: bold;
+         text-align: center; /* Center the content */
+      }
+
+      .final-content .text-content p {
+         font-size: 22px;
+         text-align: center; /* Center the content */
+      }
+
+      .final-content .image-content {
+         flex: 1;
+         max-width: 600px; /* Limit the width of the figure */
+      }
+
+      .final-content .image-content img {
+         width: 100%;
+         height: auto;
+      }
+      }
+   </style>
+</head>
+
+<body>
+
+<!-- Banner with Navigation Links -->
+<div class="banner">
+   <a href="/biomiX-release/#biomix">BiomiX</a>
+   <a href="/IxI-97.github.io/Installation.html">Installation</a>
+   <a href="/biomiX-release/#single-omics-analysis">Single-omics analysis</a>
+   <a href="/biomiX-release/#integration">Integration</a>
+   <a href="/biomiX-release/#biological-interpretation">Biological Interpretation</a>
+   <a href="/biomiX-release/#about-us">About us</a>
+</div>
+
+<!-- Header Section with Figure, Heading, Description, and Button -->
+<div class="header-section">
+   <figure>
+      <img src="Main_1.jpg" alt="BiomiX Logo"> <!-- Replace "your-image.jpg" with the actual filename of your jpg image -->
+      <div class="header-overlay">
+         <h1>BiomiX</h1>
+         <p>A multi-omics analysis toolkit</p>
+         <a href="/biomiX-release/#installation" class="install-button">Get Started»</a>
+      </div>
+   </figure>
+</div>
+
+<!-- Inline Figures with Titles and Text -->
+<div class="inline-figures">
+   <div class="inline-figure">
+      <img src="Main_1_line.svg" alt="Inline Image 1">
+      <h2>Samples subpopulation</h2>
+      <p>Subgroup your samples based on a your gene panel. Discriminate by biological pathway or a signalling genes to have a deeper answer to you questions .</p>
+   </div>
+   <div class="inline-figure">
+      <img src="Main_2_line.svg" alt="Inline Image 2">
+      <h2>Biological interpretation</h2>
+      <p>Discover our implementation for MOFA factors exploration and comprehension </p>
+   </div>
+   <div class="inline-figure">
+      <img src="Main_3_line.svg" alt="Inline Image 3">
+      <h2>Statistics and tests</h2>
+      <p>Explore the statistical approach available in BiomiX and find the most suitable for you .</p>
+   </div>
+</div>
+
+<!-- Content Section with Title, Text, and Figures -->
+<div class="content-section">
+   <div class="text-content">
+      <h2>Single omics analysis just a click away</h2>
+      <p>High customizable pipelines for transcriptomics, metabolomics and methylomics data and a wide choise of parameters for a perfect personalized analysis.<br>Feel free to do your research focussing on the biology, we will take care of the analysis. </p>
+   </div>
+   <div class="image-content">
+      <img src="Main_2a.svg" alt="Image for section 4"> <!-- Replace "your-image.jpg" with the actual filename of your jpg image -->
+   </div>
+</div>
+
+<!-- Final Content Section with Title, Text, and Figure -->
+<div class="final-content">
+   <div class="image-content">
+      <img src="Main_2b.svg" alt="Image for the final section"> <!-- Replace "your-image.jpg" with the actual filename of your jpg image -->
+   </div>
+   <div class="text-content">
+      <h2>Multi-omics data integration for every user</h2>
+      <p>Data integration requires code skills? Not here.<br> Here MOFA integration is made available for everyone with a simple interface and parameter choise. Explore deeper you data with our worry-free solution. </p>
+   </div>
+</div>
+
+<!-- Main content of your page goes here -->
+
+</body>
+
+</html>

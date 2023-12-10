@@ -232,7 +232,7 @@
       <p>Subgroup your samples based on a your gene panel. Discriminate by biological pathway or a signalling genes to have a deeper answer to you questions .</p>
    </div>
    <div class="inline-figure">
-      <img src="Main_1_line" alt="Inline Image 2">
+      <img src="Main_2_line.svg" alt="Inline Image 2">
       <h2>Biological interpretation</h2>
       <p>Discover our implementation for MOFA factors exploration and comprehension </p>
    </div>

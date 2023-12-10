@@ -1,107 +1,99 @@
-<h2 id="installation-and-usage">Installation and usage</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- Linux OS -->
-<h3 id="linux-os">Linux OS</h3>
-<ol>
-   <li>
-      Download Biomix from the GitHub page and decompress it. The installation in the home directory is suggested. From bash type
-      <pre><code>
-         <span class="command-line">cd</span>
-         <span class="copy-button" onclick="copyCommand(this)">wget linktothelatestBiomiXversion</span>
-         <span class="copy-button" onclick="copyCommand(this)">tar -xvzf Biomix2.2.tar.gz</span>
-      </code></pre>
-   </li>
-   <li>
-      BiomiX uses conda to install the r and python package dependencies. 
-      Install conda from the website: <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank">https://docs.conda.io/en/latest/miniconda.html</a> or type on the bash
-      <pre><code>
-         <span class="copy-button" onclick="copyCommand(this)">wget http://repo.anaconda.com/miniconda/Miniconda3-py310_23.3.1-0-Linux-x86_64.sh</span>
-         <span class="copy-button" onclick="copyCommand(this)">bash Miniconda3-py310_23.3.1-0-Linux-x86_64.sh</span>
-      </code></pre>
-   </li>
-   <li>
-      Follow the instructions, selecting conda init = yes. Close and reopen the bash terminal.
-   </li>
-   <li>
-      Run the BiomiX_INSTALL_LINUX.sh script within the _INSTALL folder and wait until the end of the installation.
-      <pre><code>
-         <span class="command-line">. /path/to/BiomiX2.2_INSTALL/BiomiX_INSTALL_LINUX.sh</span>
-      </code></pre>
-   </li>
-   <li>
-      Run the Biomix_exe.sh script within the BiomiX2.2 folder to open BiomiX and start your analysis.
-      <pre><code>
-         <span class="command-line">. /path/to/BiomiX2.2/Biomix_exe.sh</span>
-      </code></pre>
-   </li>
-   <li>
-      Enjoy BiomiX!
-   </li>
-</ol>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation and Usage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
 
-<!-- Windows OS -->
-<h3 id="windows-os">Windows OS</h3>
-<ol>
-   <li>
-      Download Biomix from the GitHub page and decompress it (by application e.g. Winzip or terminal cmd). The installation in the home directory is suggested.
-      If using the Windows terminal type
-      <pre><code>
-         <span class="command-line">cd</span>
-         <span class="copy-button" onclick="copyCommand(this)">wget linktothelatestBiomiXversion</span>
-         <span class="copy-button" onclick="copyCommand(this)">tar -xvzf Biomix2.2.tar.gz</span>
-      </code></pre>
-   </li>
-   <li>
-      BiomiX uses conda to install the r and python package dependencies. 
-      Install conda from the website: <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank">https://docs.conda.io/en/latest/miniconda.html</a>
-   </li>
-   <li>
-      Follow the installation instructions
-   </li>
-   <li>
-      Open the search in the Windows taskbar for the application "Anaconda powershell prompt"
-   </li>
-   <li>
-      Double-click in the BiomiX_INSTALL_WINDOWS.bat script within the _INSTALL folder and wait until the end of the installation.
-   </li>
-   <li>
-      Double-click on the Biomix_exe.bat script within the BiomiX2.2 folder to open BiomiX and start your analysis.
-   </li>
-   <li>
-      Enjoy BiomiX!
-   </li>
-</ol>
+        h2, h3, h4 {
+            color: #3498db;
+        }
 
-<!-- Troubleshooting Section -->
-<h3 id="troubleshooting">Troubleshooting</h3>
+        code {
+            background-color: #f2f2f2;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
 
-<!-- Troubleshooting Points -->
-<h4 id="-modulenotfounderror-no-module-named-package-name-"><strong>ModuleNotFoundError: No module named 'package name'</strong></h4>
-<p>It happens during the conda installation "step 2" because the python installed on your computer doesn't have it. This can be fixed by typing in the terminal: <strong>pip install 'package name'</strong></p>
+        ol {
+            list-style-type: decimal;
+            padding-left: 20px;
+        }
 
-<h4 id="biomix_install_windows-bat-or-biomix_install_linux-sh-not-working">BiomiX_INSTALL_WINDOWS.bat or BiomiX_INSTALL_LINUX.sh not working</h4>
-<p>It can happen that because of different packages already installed something conflict can arise. We suggest you visit the <a href="Alternative_Installation.md">alternative installation guide</a>, for a step-by-step installation.</p>
+        li {
+            margin-bottom: 10px;
+        }
 
-<!-- Script for Copying Commands -->
-<script>
-   function copyCommand(element) {
-      var textArea = document.createElement("textarea");
-      textArea.value = element.textContent.trim();
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand("copy");
-      document.body.removeChild(textArea);
-   }
-</script>
-<style>
-   .copy-button {
-      background-color: #3498db;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      cursor: pointer;
-      border-radius: 3px;
-      margin-left: 5px;
-   }
-</style>
+        .troubleshooting {
+            margin-top: 20px;
+        }
 
+        .troubleshooting h4 {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 id="installation-and-usage">Installation and Usage</h2>
+
+    <h3 id="linux-os">Linux OS</h3>
+    <ol>
+        <li>Download Biomix from the GitHub page and decompress it. The installation in the home directory is suggested. From bash type
+            <pre><code>cd
+wget linktothelatestBiomiXversion
+tar -xvzf Biomix2.2.tar.gz
+</code></pre>
+        </li>
+        <li>BiomiX uses conda to install the R and Python package dependencies. Install conda from the website: <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a> or type on the bash
+            <pre><code>wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.3.1-0-Linux-x86_64.sh
+bash Miniconda3-py310_23.3.1-0-Linux-x86_64.sh
+</code></pre>
+        </li>
+        <li>Follow the instructions, selecting conda init = yes. Close and reopen the bash terminal.</li>
+        <li>Run the BiomiX_INSTALL_LINUX.sh script within the _INSTALL folder and wait until the end of the installation.
+            <pre><code>./path/to/BiomiX2.2/_INSTALL/BiomiX_INSTALL_LINUX.sh
+</code></pre>
+        </li>
+        <li>Run the Biomix_exe.sh script within the BiomiX2.2 folder to open BiomiX and start your analysis.
+            <pre><code>./path/to/BiomiX2.2/Biomix_exe.sh
+</code></pre>
+        </li>
+        <li>Enjoy BiomiX!</li>
+    </ol>
+
+    <h3 id="windows-os">Windows OS</h3>
+    <ol>
+        <li>Download Biomix from the GitHub page and decompress it (by application e.g. Winzip or terminal cmd). The installation in the home directory is suggested. If using the Windows terminal type
+            <pre><code>cd
+wget linktothelatestBiomiXversion
+tar -xvzf Biomix2.2.tar.gz
+</code></pre>
+        </li>
+        <li>BiomiX uses conda to install the R and Python package dependencies. Install conda from the website <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a></li>
+        <li>Follow the installation instructions</li>
+        <li>Open the search in the Windows taskbar for the application "Anaconda powershell prompt"</li>
+        <li>Double-click in the BiomiX_INSTALL_WINDOWS.bat script within the _INSTALL folder and wait until the end of the installation.</li>
+        <li>Double-click on the Biomix_exe.bat script within the BiomiX2.2 folder to open BiomiX and start your analysis.</li>
+        <li>Enjoy BiomiX!</li>
+    </ol>
+
+    <div class="troubleshooting">
+        <h3 id="troubleshooting">Troubleshooting</h3>
+        <h4 id="-modulenotfounderror-no-module-named-package-name-"><strong>ModuleNotFoundError: No module named 'package name'</strong></h4>
+        <p>It happens during the conda installation "step 2" because the Python installed on your computer doesn't have it. This can be fixed by typing in the terminal: <strong>pip install 'package name'</strong></p>
+        <h4 id="biomix_install_windows-bat-or-biomix_install_linux-sh-not-working">BiomiX_INSTALL_WINDOWS.bat or BiomiX_INSTALL_LINUX.sh not working</h4>
+        <p>It can happen that because of different packages already installed something conflict can arise. We suggest you visit the <a href="Alternative_Installation.md">alternative installation guide</a>, for a step-by-step installation.</p>
+    </div>
+
+</body>
+
+</html>

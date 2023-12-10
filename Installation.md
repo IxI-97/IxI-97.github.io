@@ -1,6 +1,6 @@
 ## Installation and usage
 ### Linux OS
-  1. Download Biomix from the github page and decompress it. The installation in the home directory is suggested. From bash type
+  1. Download Biomix from the GitHub page and decompress it. The installation in the home directory is suggested. From bash type
 ```
   cd
   wget linktothelatestBiomiXversion
@@ -14,7 +14,7 @@
 ```
   3. Follow the instructions, selecting conda init = yes. Close and reopen the bash terminal.
 
-  4. Run the BiomiX_INSTALL_LINUX.sh script within the _INSTALL folder and wait the end of the installation.
+  4. Run the BiomiX_INSTALL_LINUX.sh script within the _INSTALL folder and wait until the end of the installation.
 ```
   ./path/to/BiomiX2.2/_INSTALL/BiomiX_INSTALL_LINUX.sh
 ```
@@ -26,8 +26,8 @@
 
 
 ### Windows OS
-  1. Download Biomix from the github page and decompress it (by application e.i Winzip or terminal cmd). The installation in the home directory is suggest.
-     If using the windows terminal type
+  1. Download Biomix from the GitHub page and decompress it (by application e.g. Winzip or terminal cmd). The installation in the home directory is suggested.
+     If using the Windows terminal type
 ```
   cd
   wget linktothelatestBiomiXversion
@@ -38,16 +38,16 @@
 
   3. Follow the installation instructions
   
-  4. Open the search in Windows taskbar the application "Anaconda powershell prompt"
+  4. Open the search in the Windows taskbar for the application "Anaconda powershell prompt"
 
-  5. Double click in the BiomiX_INSTALL_WINDOWS.bat script within the _INSTALL folder and wait the end of the installation.
+  5. Double-click in the BiomiX_INSTALL_WINDOWS.bat script within the _INSTALL folder and wait until the end of the installation.
 
-  6. Double click on the Biomix_exe.bat script within the BiomiX2.2 folder to open BiomiX and start your analysis.
+  6. Double-click on the Biomix_exe.bat script within the BiomiX2.2 folder to open BiomiX and start your analysis.
 
   7. Enjoy BiomiX!
    
 ### Troubleshooting
 #### **ModuleNotFoundError: No module named 'package name'** 
-It happens during the conda installation "step 2" because the python installed in your computer doesn't have. Can be fixed typing in the terminal: **pip install 'package name'**
+It happens during the conda installation "step 2" because the python installed on your computer doesn't have it. This can be fixed by typing in the terminal: **pip install 'package name'**
 #### BiomiX_INSTALL_WINDOWS.bat or BiomiX_INSTALL_LINUX.sh not working
-It can happen that because of different package already installed something conflic can arise. We suggest you to visit the [alternative installation guide](Alternative_Installation.md), for a step by step installation.
+It can happen that because of different packages already installed something conflict can arise. We suggest you visit the [alternative installation guide](Alternative_Installation.md), for a step-by-step installation.

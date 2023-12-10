@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -216,7 +215,7 @@
 <!-- Header Section with Figure, Heading, Description, and Button -->
 <div class="header-section">
    <figure>
-      <img src="10.jpg" alt="BiomiX Logo"> <!-- Replace "your-image.jpg" with the actual filename of your jpg image -->
+      <img src="Main_1.jpg" alt="BiomiX Logo"> <!-- Replace "your-image.jpg" with the actual filename of your jpg image -->
       <div class="header-overlay">
          <h1>BiomiX</h1>
          <p>A multi-omics analysis toolkit</p>
@@ -228,17 +227,17 @@
 <!-- Inline Figures with Titles and Text -->
 <div class="inline-figures">
    <div class="inline-figure">
-      <img src="11.svg" alt="Inline Image 1">
+      <img src="Main_1_line.svg" alt="Inline Image 1">
       <h2>Samples subpopulation</h2>
       <p>Subgroup your samples based on a your gene panel. Discriminate by biological pathway or a signalling genes to have a deeper answer to you questions .</p>
    </div>
    <div class="inline-figure">
-      <img src="13.svg" alt="Inline Image 2">
+      <img src="Main_2_line" alt="Inline Image 2">
       <h2>Biological interpretation</h2>
       <p>Discover our implementation for MOFA factors exploration and comprehension </p>
    </div>
    <div class="inline-figure">
-      <img src="12.svg" alt="Inline Image 3">
+      <img src="Main_3_line.svg" alt="Inline Image 3">
       <h2>Statistics and tests</h2>
       <p>Explore the statistical approach available in BiomiX and find the most suitable for you .</p>
    </div>
@@ -251,14 +250,14 @@
       <p>High customizable pipelines for transcriptomics, metabolomics and methylomics data and a wide choise of parameters for a perfect personalized analysis.<br>Feel free to do your research focussing on the biology, we will take care of the analysis. </p>
    </div>
    <div class="image-content">
-      <img src="15b.svg" alt="Image for section 4"> <!-- Replace "your-image.jpg" with the actual filename of your jpg image -->
+      <img src="Main_2a.svg" alt="Image for section 4"> <!-- Replace "your-image.jpg" with the actual filename of your jpg image -->
    </div>
 </div>
 
 <!-- Final Content Section with Title, Text, and Figure -->
 <div class="final-content">
    <div class="image-content">
-      <img src="15d.svg" alt="Image for the final section"> <!-- Replace "your-image.jpg" with the actual filename of your jpg image -->
+      <img src="Main_2b.svg" alt="Image for the final section"> <!-- Replace "your-image.jpg" with the actual filename of your jpg image -->
    </div>
    <div class="text-content">
       <h2>Multi-omics data integration for every user</h2>

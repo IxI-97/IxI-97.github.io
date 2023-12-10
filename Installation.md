@@ -14,7 +14,7 @@
 ```
   3. Follow the instructions, selecting conda init = yes. Close and reopen the bash terminal.
 
-  4. Run the BiomiX_INSTALL_LINUX.sh script within the _INSTALL folder.
+  4. Run the BiomiX_INSTALL_LINUX.sh script within the _INSTALL folder and wait the end of the installation.
 ```
   ./path/to/BiomiX2.2/_INSTALL/BiomiX_INSTALL_LINUX.sh
 ```
@@ -40,7 +40,7 @@
   
   4. Open the search in Windows taskbar the application "Anaconda powershell prompt"
 
-  5. Double click in the BiomiX_INSTALL_WINDOWS.bat script within the _INSTALL folder.
+  5. Double click in the BiomiX_INSTALL_WINDOWS.bat script within the _INSTALL folder and wait the end of the installation.
 
   6. Double click on the Biomix_exe.bat script within the BiomiX2.2 folder to open BiomiX and start your analysis.
 

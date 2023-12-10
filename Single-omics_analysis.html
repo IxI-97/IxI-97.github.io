@@ -1,73 +1,98 @@
-
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single-omics Analysis</title>
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
 
-<!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>BiomiX Tutorial | IxI-97.github.io</title>
-<meta name="generator" content="Jekyll v3.9.3" />
-<meta property="og:title" content="BiomiX Tutorial" />
-<meta property="og:locale" content="en_US" />
-<link rel="canonical" href="https://ixi-97.github.io/" />
-<meta property="og:url" content="https://ixi-97.github.io/" />
-<meta property="og:site_name" content="IxI-97.github.io" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="BiomiX Tutorial" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","headline":"BiomiX Tutorial","name":"IxI-97.github.io","url":"https://ixi-97.github.io/"}</script>
-<!-- End Jekyll SEO tag -->
+        .banner {
+            background-color: #3498db;
+            padding: 10px;
+            text-align: left;
+            color: white;
+        }
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=3f56c8ffc13194e86532b6e7b6fd134f170b2763">
-    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+        .banner a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+        }
 
-<!-- Setup Google Analytics -->
+        h2, h3, h4 {
+            color: #3498db;
+        }
 
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
 
+        .additional-features {
+            margin-left: 20px;
+        }
 
-<!-- You can set your favicon here -->
-<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+        .copy-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+    </style>
+</head>
 
-<!-- end custom head snippets -->
+<body>
+    <!-- Banner with Navigation Links -->
+    <div class="banner">
+        <a href="/biomiX-release/#biomix">BiomiX</a>
+        <a href="/biomiX-release/#installation">Installation</a>
+        <a href="/biomiX-release/#single-omics-analysis">Single-omics analysis</a>
+        <a href="/biomiX-release/#integration">Integration</a>
+        <a href="/biomiX-release/#biological-interpretation">Biological Interpretation</a>
+        <a href="/biomiX-release/#about-us">About us</a>
+    </div>
 
-  </head>
-  <body>
-    <div class="container-lg px-3 my-5 markdown-body">
-      
-      <h1><a href="https://ixi-97.github.io/">IxI-97.github.io</a></h1>
-      
+    <h2 id="single-omics-analysis">Single-omics Analysis</h2>
 
-      <h1 id="biomix-tutorial">BiomiX Tutorial</h1>
+    <h3 id="transcriptomics">Transcriptomics</h3>
 
-<ul>
-  <li>Go to <a href="/Installation.html">Installation</a></li>
-  <li>Go to <a href="/Single-omics_analysis.html">Single-omics analysis guide</a></li>
-  <li>Go to <a href="/Integration_analysis.html">Integration analysis guide</a></li>
-</ul>
+    <h4 id="input-information">Input Information</h4>
+    <p>BiomiX analyses the expression matrix to quantify the expression difference between two groups of samples discriminating automatically between raw counts, analyzed using the Deseq package, and normalized counts, analyzed by Limma package. Biomix requires an expression matrix <strong>Msg</strong> where the columns <strong>s</strong> represent the samples while the rows <strong>g</strong> contain the genes in Ensembl or gene names format.</p>
 
-<h2 id="single-omics-analysis">Single-omics analysis</h2>
-<h3 id="transcriptomics">Transcriptomics</h3>
+    <p>BiomiX is developed to deconvolute matrices containing samples from different experiments and select only the ones the user wants to analyze. For example, analyze only B cells in a matrix containing the expression of B cells, T cells, Neutrophils, and Monocytes.</p>
 
-<p>BiomiX analyses the expression matrix to quantify the expression difference between two groups of samples discriminating automatically between raw counts, analyzed using the Deseq package, and normalized counts, analyzed by Limma package. Biomix requires an expression matrix <strong>Msg</strong> where the columns <strong>s</strong> represent the samples while the rows <strong>g</strong> contain the genes in Ensembl or gene names format. The analysis highlights the differentially expressed genes (DEG), their Log2FC and p.adj plus pff reports containing volcano plots, heatmaps and gene variances. If sex and gender are available in the metadata these will be automatically used to correct the Deseq2 or Limma model. The default thresholds to consider the differentially expressed genes were set to Log2FC &gt; 0.5 and p.adj &lt; 0.05. The p.value has been adjusted using the False Discovery Rate (FDR) method. The enrichment of biological process in the results is explored in the R version of EnrichR. Moreover, pre-treated output files are produced to carry out the gene set enrichment analysis using GSEA or EnrichR. The expression matrix is also normalizalized by variance stabilizing transformation (vst) for data visualization and MOFA integration</p>
+    <p>The tool has been developed to accept both formats and to provide input in MOFA including only the ID number to allow integration with different omics. So if you have a convoluted matrix it is enough to run the DGE analysis, cross the selection option and use in the label the name of the tissue. BiomiX will look in the <strong>SAMPLE_TYPE</strong> column and filter on the <strong>tissue_name</strong>.</p>
 
-<div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Transcriptomics.svg?raw=true" />
-</div>
+    <h4 id="the-analysis">The Analysis</h4>
+    <p>The analysis highlights the differentially expressed genes (DEG), their Log2FC and p.adj plus pff reports containing volcano plots, heatmaps, and gene variances. If sex and gender are available in the metadata these will be automatically used to correct the Deseq2 or Limma model. The default thresholds to consider the differentially expressed genes were set to Log2FC > 0.5 and p.adj < 0.05.</p>
 
-<ul>
-  <li>
-    <p><strong>Additional features</strong></p>
+    <p>The enrichment of biological processes in the results is explored in the R version of EnrichR. Moreover, pre-treated output files are produced to carry out the gene set enrichment analysis using GSEA or EnrichR. The expression matrix is also normalized by variance stabilizing transformation (vst) for data visualization and MOFA integration.</p>
 
-    <ul>
-      <li><strong>Gene Panel subgrouping</strong>: It is possible to provide a panel of genes within <em>GENE_PANEL</em> file, in <em>Transcriptomics/INPUT</em> directory. The genes must be in Gene symbol format and tab-delimited (by enter button).</li>
-    </ul>
-  </li>
-</ul>
+    <div align="center">
+        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Transcriptomics.svg?raw=true">
+    </div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GENES_FOR_SUBPOPULATION
+    <div class="additional-features">
+        <h4>Additional Features</h4>
+
+        <ul>
+            <li>
+                <strong>Gene Panel subgrouping:</strong> It is possible to provide a panel of genes within <strong>GENE_PANEL</strong> file, in <strong>Transcriptomics/INPUT</strong> directory. The genes must be in Gene symbol format and tab-delimited (by enter button).
+                <pre><code>GENES_FOR_SUBPOPULATION
 SIGLEC1
 IFIT3
 IFI6
@@ -76,95 +101,50 @@ MX1
 USP18
 OAS3
 IFI44L
-</code></pre></div></div>
-<ul>
-  <li>These genes will build a heatmap containing the expression standard deviation of each specific gene in each sample. This will allow 
-   us to classify the condition/disease samples in positive and negative while BiomiX will carry out a differential gene expression 
-   analysis comparing the chosen controls and these two groups.
-    <ul>
-      <li><strong>Subgrouping comparison with other clinical/biological data</strong>: It is possible to add a column named <strong>MARKER</strong> in the metadata containing the classification according to clinical or biological analysis on the samples. This marker can be compared to the subgrouping obtained from the user gene panel to observe similarities or differences.</li>
-    </ul>
-  </li>
-</ul>
+</code></pre>
+                These genes will build a heatmap containing the expression standard deviation of each specific gene in each sample. This will allow us to classify the condition/disease samples in positive and negative while BiomiX will carry out a differential gene expression analysis comparing the chosen controls and these two groups.
+            </li>
+            <li>
+                <strong>Subgrouping comparison with other clinical/biological data:</strong> It is possible to add a column named <strong>MARKER</strong> in the metadata containing the classification according to clinical or biological analysis on the samples. This marker can be compared to the subgrouping obtained from the user gene panel to observe similarities or differences.
+            </li>
+        </ul>
 
-<div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Heatmap_BLymphocytes_CTRL_vs_SLE2.svg?raw=true" />
-</div>
+        <div align="center">
+            <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Heatmap_BLymphocytes_CTRL_vs_SLE2.svg?raw=true">
+        </div>
 
-<ul>
-  <li>
-    <ul>
-      <li><strong>EnrichR</strong>: It is possible to copy the gene list provided in the results to obtain the enrichment of the biological pathways direct in EnrichR webtool: https://maayanlab.cloud/Enrichr/.</li>
-    </ul>
-  </li>
-</ul>
+        <div align="center">
+            <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/enrichR.svg?raw=true">
+        </div>
 
-<div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/enrichR.svg?raw=true" />
-</div>
-
-<ul>
-  <li>
-    <ul>
-      <li><strong>GSEA</strong>: It is possible to upload the gene matrix and the metadata information pre-processed by BiomiX to run a GSEA analysis: https://www.gsea-msigdb.org/gsea/index.jsp.</li>
-    </ul>
-  </li>
-</ul>
-
-<div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/GSEA2.svg?raw=true" />
-</div>
-
-<h3 id="metabolomics">Metabolomics</h3>
-
-<p>BiomiX metabolomics data requires peaks signals matrix <strong>Msg</strong> where the columns <strong>s</strong> represent the samples while the rows <strong>g</strong> contain the arbitrary peak numbers. BiomiX is flexible, allowing annotated and not annotated metabolomics data. If the
-annotation is required, based on the available information can execute an MS1 annotation
-(mass/charge ratio and retention time values required) or an MS2 one (fragmentation files . Mzml
-required). If you have only row .mzML files, to generate the peak signals matrix we strongly suggest this easy R pipeline by
-Á. Fernández-Ochoa (ADD THE TUTORIAL).</p>
-
-<p>The peak signals from the condition/treated
-samples are compared with the CTRL calculating the Log2FC as the log2 of the ratio between the
-median peak signal in condition-treated samples/ median peak signal in CTRL for each peak. The
-p.value was evaluated by the non-parametric Mann-Whitney test and corrected through the FDR
-method. Then, peaks are annotated using the Ceu Mass Mediator tool through the CMMR R
-package, which provides a direct Application Programming Interface in R. To filter metabolites
-contemporary associated with one identical peak, are automatically examined lists containing earlier
-identified or predicted metabolites within the Human Metabolome Database (HMDB)31 These
-include plasma, urine, saliva, cerebrospinal fluid, feces, sweat, breast milk, bile and amniotic fluid
-samples. If MS/MS spectra are also available, a metabolite annotation of level two is possible.
-BiomiX will automatically upload all the .Mzml file available in the indicated directory and verify
-the peaks fragmentation spectra looking for a match in the MONA, MassBank, and HMDB.The user has to define a priority among these databases, where the first will be used as the reference while the others will fill the peaks not annotated by the higher priority database. The priority and the usage and not usage of these databases are fully customizable. The spectra predicted and the
-ones retrieved in the. Mzml files are saved in the output folder. Each peak annotation detected in the
-MS2 will automatically replace one obtained in MS1.</p>
-
-<div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Metabolomics.svg?raw=true" />
-</div>
-
-<p>The significant metabolites increased and reduced are displayed in a volcano plot while a
-logarithmic transformation is applied to the peak signal matrix for MOFA integration. To unveil the
-change in biological pathways, BiomiX automatically exploits a methPath v1.0.5 from tidymass
-v1.0.8 to spot enrichment in the metabolic process among the significantly changed metabolites.
-Moreover, for a deeper analysis, it prepares ready-to-copy files as input for Metaboanalyst32. It is
-one of the most advanced online tools for metabolomics analysis, including enrichment and
-Metabolite set enrichment analysis. Autonomously, if transcriptomics results are available in
-BiomiX analysis will join the metabolomics and transcriptomics results into files copiable on
-Metaboanalyst to launch joint pathway analysis and network analysis.</p>
-
-<h3 id="methylomics">Methylomics</h3>
-
-<p>Biomix requires an expression matrix Msg where the columns s represent the samples while the rows g contain the CpG island annotation. The matrix must contain the beta-values, if not available, these can be obtained by the minfi R package33. The
-Differential methylation analysis (DMA) is performed using the ChAMP database, providing the
-results of the CpG island hypermethylated and hypomethylated with a volcano plot. The threshold
-has been set as default to the beta value change (Δbeta) &gt; |0.15| and p.adj &lt; 0.05.</p>
-
-<div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Methylomics.svg?raw=true" />
-</div>
-      
+        <div align="center">
+            <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/GSEA2.svg?raw=true">
+        </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
-    <script>anchors.add();</script>
-  </body>
+
+    <h3 id="metabolomics">Metabolomics</h3>
+
+    <p>BiomiX metabolomics data requires peaks signals matrix <strong>Msg</strong> where the columns <strong>s</strong> represent the samples while the rows <strong>g</strong> contain the arbitrary peak numbers. BiomiX is flexible, allowing annotated and not annotated metabolomics data. If the annotation is required, based on the available information can execute an MS1 annotation (mass/charge ratio and retention time values required) or an MS2 one (fragmentation files . Mzml required).</p>
+
+    <p>If you have only row .mzML files, to generate the peak signals matrix we strongly suggest this easy R pipeline by Á. Fernández-Ochoa (ADD THE TUTORIAL).</p>
+
+    <p>The peak signals from the condition/treated samples are compared with the CTRL calculating the Log2FC as the log2 of the ratio between the median peak signal in condition-treated samples/ median peak signal in CTRL for each peak.</p>
+
+    <div align="center">
+        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Metabolomics.svg?raw=true">
+    </div>
+
+    <p>The significant metabolites increased and reduced are displayed in a volcano plot while a logarithmic transformation is applied to the peak signal matrix for MOFA integration.</p>
+
+    <p>To unveil the change in biological pathways, BiomiX automatically exploits a methPath v1.0.5 from tidymass v1.0.8 to spot enrichment in the metabolic process among the significantly changed metabolites. Moreover, for a deeper analysis, it prepares ready-to-copy files as input for Metaboanalyst32. It is one of the most advanced online tools for metabolomics analysis, including enrichment and Metabolite set enrichment analysis. Autonomously, if transcriptomics results are available in BiomiX analysis will join the metabolomics and transcriptomics results into files copiable on Metaboanalyst to launch joint pathway analysis and network analysis.</p>
+
+    <h3 id="methylomics">Methylomics</h3>
+
+    <p>Biomix requires an expression matrix <strong>Msg</strong> where the columns <strong>s</strong> represent the samples while the rows <strong>g</strong> contain the CpG island annotation. The matrix must contain the beta-values, if not available, these can be obtained by the minfi R package33. The Differential methylation analysis (DMA) is performed using the ChAMP database, providing the results of the CpG island hypermethylated and hypomethylated with a volcano plot. The threshold has been set as default to the beta value change (Δbeta) > |0.15| and p.adj < 0.05.</p>
+
+    <div align="center">
+        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Methylomics.svg?raw=true">
+    </div>
+</body>
+
 </html>

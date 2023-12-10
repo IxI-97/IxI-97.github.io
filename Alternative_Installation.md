@@ -1,6 +1,6 @@
 ## Installation
 ### Linux OS
-  1. Download Biomix from the github page and decompress it. The installation in the home directory is suggested. From bash type
+  1. Download Biomix from the GitHub page and decompress it. The installation in the home directory is suggested. From bash type
 ```
   cd
   wget linktothelatestBiomiXversion
@@ -30,8 +30,8 @@
 
 
 ### Windows OS
-  1. Download Biomix from the github page and decompress it (by application e.i Winzip or terminal cmd). The installation in the home directory is suggest.
-     If using the windows terminal type
+  1. Download Biomix from the GitHub page and decompress it (by application e.g. Winzip or terminal cmd). The installation in the home directory is suggested.
+     If using the Windows terminal type
 ```
   cd
   wget linktothelatestBiomiXversion
@@ -42,9 +42,9 @@
 
   3. Follow the installation instructions
   
-  4. Open the search in Windows taskbar the application "Anaconda powershell prompt"
+  4. Open the search in the Windows taskbar for the application "Anaconda powershell prompt"
 
-  5. Create your BiomiX environment (BiomiX-env) in conda typing on the conda powershell
+  5. Create your BiomiX environment (BiomiX-env) in conda typing on the conda PowerShell
 ```
   conda create -n BiomiX-env python=3.9
 ```
@@ -52,12 +52,12 @@
 ```
   conda activate BiomiX-env
 ```
-  7. Install R and igraph package.
+  7. Install the R and igraph package.
 ```
   conda install -c conda-forge r-base=4.1.3
   conda install -c conda-forge r-igraph
 ```
-  8. Run the BiomiX_INSTALL Python script clicking on it or typing in the conda powershell
+  8. Run the BiomiX_INSTALL Python script by clicking on it or typing in the conda PowerShell
 ```
   python path/to/BiomiX2.2/_INSTALL/BiomiX_INSTALL.py
 ```
@@ -65,4 +65,4 @@
 
 ### Troubleshooting
 #### **ModuleNotFoundError: No module named 'package name'** 
-It happens during the conda installation "step 2" because the python installed in your computer doesn't have. Can be fixed typing in the terminal: **pip install 'package name'**
+It happens during the conda installation "step 2" because the python installed on your computer doesn't have it. This can be fixed by typing in the terminal: **pip install 'package name'**

@@ -2,7 +2,7 @@
 ### Transcriptomics
 
 #### Input information
-BiomiX analyses the expression matrix to quantify the expression difference between two groups of samples discriminating automatically between raw counts, analyzed using the Deseq package, and normalized counts, analyzed by Limma package. Biomix requires an expression matrix **Msg** where the columns **s** represent the samples while the rows **g** contain the genes in Ensembl or gene names format. 
+BiomiX analyses expression matrixes to quantify the expression difference between two groups of samples. It can discriminate automatically between raw counts (analyzed by the Deseq package), and normalized counts (analyzed by the Limma package) requiring an expression matrix **Msg** where the columns **s** represent the samples while the rows **g** contain the genes in Ensembl or gene names format. To obtain the desired format BiomiX has a quick file modifier to easily lead the user to the right format. (Read more in the interface usage section)
 
 BiomiX is developed to deconvolute matrices containing samples from different experiments and select only the ones the user wants to analyse (E.i analyse only B cells in a matrix containing the expression of B cells, T cells, Neutrophiles and Monocytes). This addition was developed to avoid the sorting of each group of samples in different matrices. The format to respect is clear, we suggest to call sample names using an ID number (e.i 3560087) for the analysis, except when there are multiple samples from the same patients, in this case, a single ID number is not enough. To distinguish these multiple samples the format suggested is ID number + tissue_name (e.i 3560087_BLymphocytes). 
 
@@ -99,4 +99,13 @@ has been set as default to the beta value change (Δbeta) > |0.15| and p.adj < 0
 
  <div align="center">
     <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Methylomics.svg?raw=true">
+</div>
+
+
+### Interface usage
+#### Assisted input modification
+Click on the input button and select the file you want to modify. After the file selection, it is possible to decide if the selected file must be used as input for the analysis or if you desire to modify it in the BiomiX standard format. When you select "Yes" to the Pop-up "Do you want to modify the file?", another Pop-up will appear, asking for the file separator, the header, the column containing the ID and the type of decimal separator. Then the matrix preview will appear in the "preview" tab, allowing the user to visualize if the format is the right one. If not the case it is possible to modify the table using the other tab, which contains buttons to remove specific columns and rows and eventually traspose the matrix. WARNING: The preview will include the first 10 columns and rows, so it does not represent the entire matrix. 
+
+ <div align="center">
+    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/INPUT_1.png?raw=true">
 </div>

@@ -106,6 +106,7 @@ has been set as default to the beta value change (Δbeta) > |0.15| and p.adj < 0
 #### Assisted input modification
 Click on the input button and select the file you want to modify. 
 
+
  <div align="center">
     <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/INPUT_1.png?raw=true">
 </div>
@@ -113,19 +114,25 @@ Click on the input button and select the file you want to modify.
     <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/INPUT_2.png?raw=true">
 </div>
 
+
 After the file selection, it is possible to decide if the selected file must be used as input for the analysis or if you desire to modify it in the BiomiX standard format.
+
 
  <div align="center">
     <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/INPUT_3.png?raw=true">
 </div>
 
+
 When you select "Yes" to the Pop-up "Do you want to modify the file?", another Pop-up will appear, asking for the file separator, the header, the column containing the ID and the type of decimal separator. 
+
 
  <div align="center">
     <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/INPUT_4.png?raw=true">
 </div>
 
+
 Then the matrix preview will appear in the "preview" tab, allowing the user to visualize if the format is the right one. If not the case it is possible to modify the table using the other tab, which contains buttons to remove specific columns and rows and eventually transpose the matrix. WARNING: The preview will include the first 10 columns and rows, so it does not represent the entire matrix. 
+
 
  <div align="center">
     <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/INPUT_5.png?raw=true">

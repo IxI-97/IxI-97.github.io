@@ -1,125 +1,130 @@
-
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOFA Integration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
 
-<!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>BiomiX Tutorial | IxI-97.github.io</title>
-<meta name="generator" content="Jekyll v3.9.3" />
-<meta property="og:title" content="BiomiX Tutorial" />
-<meta property="og:locale" content="en_US" />
-<link rel="canonical" href="https://ixi-97.github.io/" />
-<meta property="og:url" content="https://ixi-97.github.io/" />
-<meta property="og:site_name" content="IxI-97.github.io" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="BiomiX Tutorial" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","headline":"BiomiX Tutorial","name":"IxI-97.github.io","url":"https://ixi-97.github.io/"}</script>
-<!-- End Jekyll SEO tag -->
+        h2, h3, h4 {
+            color: #3498db;
+        }
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=3f56c8ffc13194e86532b6e7b6fd134f170b2763">
-    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+        .center {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
 
-<!-- Setup Google Analytics -->
+        .center img {
+            display: block;
+            margin: 0 auto;
+        }
 
+        .banner {
+            background-color: #3498db; /* Blue background color */
+            padding: 10px;
+            text-align: left;
+            color: white;
+        }
 
+        .banner a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+    </style>
+</head>
 
-<!-- You can set your favicon here -->
-<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+<body>
 
-<!-- end custom head snippets -->
-
-  </head>
-  <body>
-    <div class="container-lg px-3 my-5 markdown-body">
-      
-      <h1><a href="https://ixi-97.github.io/">IxI-97.github.io</a></h1>
-      
-
-      <h1 id="biomix-tutorial">BiomiX Tutorial</h1>
-
-<ul>
-  <li>Go to <a href="/Installation.html">Installation</a></li>
-  <li>Go to <a href="/Single-omics_analysis.html">Single-omics analysis guide</a></li>
-  <li>Go to <a href="/Integration_analysis.html">Integration analysis guide</a></li>
-</ul>
-
-<h2 id="mofa-integration">MOFA integration</h2>
-
-<h3 id="mofa-analysis">MOFA integration</h3>
-<p>MOFA was used according to the webpage developer indications
-(https://biofam.github.io/MOFA2/) with normalized input data and reduced feature size. The
-transcriptome data are normalized by the Variance Stabilising Transformation (VST) function in R
-to make the data approximately homoskedastic. The top 5000 genes with higher variance in
-normalized data are selected for the MOFA integration. The metabolomics data were transformed in
-the pipeline using a log function to improve their Gaussian distribution. All peaks are used in the
-analysis. The methylomics data didn’t undergo any transformation, but like transcriptomics, only the
-top 5000 CpG islands with higher variance were selected for the integration. MOFA can calculate
-any desired total number of factors to explain the shared variance between the -omics datasets.
-Other parameters, customizable in the interface, include Convergence mode, freqELBO, and
-maxiter. Our implementation of MOFA included an automatized optimization of the total number of
-factors. It runs the MOFA algorithm with an increasing number of factors, stopping the iteration
-when at least three models showed the last MOFA factor explaining less than 1% of the variability
-of the data. Only the top 3 models in separating our two conditions are maintained. For each
-calculated factor in each model is determined how it can discriminate statistically between the two
-groups. A non-parametric Mann-Whitney test tests the factor value distribution between the two
-groups of samples correcting the p.values through the FDR method. The models selected are the
-ones with the higher number of discriminating MOFA factors, and later comparing the p.adj values.</p>
-
-<div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/disegno.svg?raw=true" />
-</div>
-
-<h3 id="mofa-factors-interpretation">MOFA factors interpretation</h3>
-
-<p>Both automatic and not automatic MOFA analysis
-includes three methods to ease the user interpretation of the discriminating MOFA factors.
-Correlation analysis. Users can upload a matrix containing binary or numerical clinical features to
-integrate into the MOFA model. The numerical data are correlated through a Pearson correlation.
-The binary clinical data are analysed using the Wilcoxon test after dividing the groups into positive
-or negative categories. The nominal p.values were corrected using the Benjamini-Hochberg method.
-Pathway analysis. BiomiX retrieves the top contributing genes, metabolites and CpG island for
-discriminating factors in each MOFA model. Depending on the type of omics data is selected an R
-package to highlight if there is an enrichment of some biological or metabolic pathway within the
-enriched genes, metabolites and CpG island. The genes are analysed by EnrichR using the
-“Reactome”, “GO biological process” and “CODE and ChEA consensus TFs from ChIP-X”
-libraries, while the metabolites are analysed through MetPath using the KEGG and HMDB
-databases. The CpG islands are associated with their genes, if it exists and is examined through
-EnrichR.
-Pubmed bibliography research. Pubmed bibliography research. For each discriminating factor in
-each MOFA model, the top contributing genes, metabolites and CpG island genes are used as input
-in Pubmed research. The aim is to retrieve articles’ abstracts associated with each discriminating
-factor, to have each of them clues behind their identity. The search algorithm has three levels of
-research, where the results merging more multiomics contributors are selected. At first, the algorithm selects the top 10 contributors from each omic provided as input and carries out research
-in which only the article abstracts show at least one out of ten contributors for each omic in the text.
-The second level does the same, but it selects article abstracts containing at least one out of ten
-contributors in omics pairs (e.g. transcriptomics-metabolomics and methylomics-transcriptomics,
-metabolomics-methylomics). Finally, the last-level research article abstracts show at least one out
-of ten contributors within a single omics in the text. The output document includes, for each of
-these three levels, an Excel document including the PubMed articles, the total number of matches
-with the contributors and how many contributors are matched in the text. Furthermore, keywords,
-DOI and the match information for each contributor are also available. The authors-provided
-keywords are not optimal due to their absence in some journals. That is why BiomiX includes here
-a further text mining analysis. The article’s abstract spotted in each level is extracted and parsed
-through the R lit search v 1.0.0 in a combination of 2-4 words. All the vocabularies generated by
-each abstract are analysed to spot combinations of words more frequently. These words are filtered
-by another vocabulary made up from gene set names as GO biological process (7751 gene sets) and
-Human Phenotype Ontology (5405 gene sets). The most frequent 15 words are included in the
-output Excel file. To conclude, the same analysis is repeated again, including all the abstracts
-retrieved within the three-level.</p>
-
-<div align="center">
-    <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/MOFA2.svg?raw=true" />
-</div>
-
-
-      
+    <!-- Banner with Navigation Links -->
+    <div class="banner">
+        <a href="/biomiX-release/#biomix">BiomiX</a>
+        <a href="/biomiX-release/#installation">Installation</a>
+        <a href="/biomiX-release/#single-omics-analysis">Single-omics analysis</a>
+        <a href="/biomiX-release/#integration">Integration</a>
+        <a href="/biomiX-release/#biological-interpretation">Biological Interpretation</a>
+        <a href="/biomiX-release/#about-us">About us</a>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
-    <script>anchors.add();</script>
-  </body>
+
+    <h2 id="mofa-integration">MOFA Integration</h2>
+
+    <h3 id="mofa-analysis">MOFA Analysis</h3>
+    <p>MOFA was used according to the webpage developer indications
+        (<a href="https://biofam.github.io/MOFA2/">https://biofam.github.io/MOFA2/</a>) with normalized input data and reduced feature size.
+        The transcriptome data are normalized by the Variance Stabilising Transformation (VST) function in R
+        to make the data approximately homoskedastic. The top 5000 genes with higher variance in
+        normalized data are selected for the MOFA integration. The metabolomics data were transformed in
+        the pipeline using a log function to improve their Gaussian distribution. All peaks are used in the
+        analysis. The methylomics data didn't undergo any transformation, but like transcriptomics, only the
+        top 5000 CpG islands with higher variance were selected for the integration. MOFA can calculate
+        any desired total number of factors to explain the shared variance between the -omics datasets.
+        Other parameters, customizable in the interface, include Convergence mode, freqELBO, and
+        maxiter. Our implementation of MOFA included an automatized optimization of the total number of
+        factors. It runs the MOFA algorithm with an increasing number of factors, stopping the iteration
+        when at least three models showed the last MOFA factor explaining less than 1% of the variability
+        of the data. Only the top 3 models in separating our two conditions are maintained. For each
+        calculated factor in each model is determined how it can discriminate statistically between the two
+        groups. A non-parametric Mann-Whitney test tests the factor value distribution between the two
+        groups of samples correcting the p.values through the FDR method. The models selected are the
+        ones with the higher number of discriminating MOFA factors, and later comparing the p.adj values.</p>
+
+    <div class="center">
+        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/disegno.svg?raw=true" alt="MOFA Image">
+    </div>
+
+    <h3 id="mofa-factors-interpretation">MOFA Factors Interpretation</h3>
+
+    <p>Both automatic and not automatic MOFA analysis
+        includes three methods to ease the user interpretation of the discriminating MOFA factors.</p>
+
+    <p><strong>Correlation analysis:</strong> Users can upload a matrix containing binary or numerical clinical features to
+        integrate into the MOFA model. The numerical data are correlated through a Pearson correlation.
+        The binary clinical data are analysed using the Wilcoxon test after dividing the groups into positive
+        or negative categories. The nominal p.values were corrected using the Benjamini-Hochberg method.</p>
+
+    <p><strong>Pathway analysis:</strong> BiomiX retrieves the top contributing genes, metabolites and CpG island for
+        discriminating factors in each MOFA model. Depending on the type of omics data is selected an R
+        package to highlight if there is an enrichment of some biological or metabolic pathway within the
+        enriched genes, metabolites and CpG island. The genes are analysed by EnrichR using the
+        "Reactome", "GO biological process" and "CODE and ChEA consensus TFs from ChIP-X"
+        libraries, while the metabolites are analysed through MetPath using the KEGG and HMDB
+        databases. The CpG islands are associated with their genes, if it exists and is examined through
+        EnrichR.</p>
+
+    <p><strong>Pubmed bibliography research:</strong> For each discriminating factor in
+        each MOFA model, the top contributing genes, metabolites and CpG island genes are used as input
+        in Pubmed research. The aim is to retrieve articles' abstracts associated with each discriminating
+        factor, to have each of them clues behind their identity. The search algorithm has three levels of
+        research, where the results merging more multiomics contributors are selected. At first, the algorithm selects the top 10 contributors from each omic provided as input and carries out research
+        in which only the article abstracts show at least one out of ten contributors for each omic in the text.
+        The second level does the same, but it selects article abstracts containing at least one out of ten
+        contributors in omics pairs (e.g. transcriptomics-metabolomics and methylomics-transcriptomics,
+        metabolomics-methylomics). Finally, the last-level research article abstracts show at least one out
+        of ten contributors within a single omics in the text. The output document includes, for each of
+        these three levels, an Excel document including the PubMed articles, the total number of matches
+        with the contributors and how many contributors are matched in the text. Furthermore, keywords,
+        DOI and the match information for each contributor are also available. The authors-provided
+        keywords are not optimal due to their absence in some journals. That is why BiomiX includes here
+        a further text mining analysis. The article's abstract spotted in each level is extracted and parsed
+        through the R lit search v 1.0.0 in a combination of 2-4 words. All the vocabularies generated by
+        each abstract are analysed to spot combinations of words more frequently. These words are filtered
+        by another vocabulary made up from gene set names as GO biological process (7751 gene sets) and
+        Human Phenotype Ontology (5405 gene sets). The most frequent 15 words are included in the
+        output Excel file. To conclude, the same analysis is repeated again, including all the abstracts
+        retrieved within the three-level.</p>
+
+    <div class="center">
+        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/MOFA2.svg?raw=true" alt="MOFA2 Image">
+    </div>
+
+</body>
+
 </html>

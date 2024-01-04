@@ -60,12 +60,12 @@
     <p>MOFA was used according to the webpage developer indications
         (<a href="https://biofam.github.io/MOFA2/">https://biofam.github.io/MOFA2/</a>) with normalized input data and reduced feature size.
         The transcriptome data are normalized by the Variance Stabilising Transformation (VST) function in R
-        to make the data approximately homoskedastic. The top 5000 genes with higher variance in
+        to make the data approximately homoskedastic. The top genes with higher variance in
         normalized data are selected for the MOFA integration. The metabolomics data were transformed in
         the pipeline using a log function to improve their Gaussian distribution. All peaks are used in the
         analysis. The methylomics data didn't undergo any transformation, but like transcriptomics, only the
-        top 5000 CpG islands with higher variance were selected for the integration. MOFA can calculate
-        any desired total number of factors to explain the shared variance between the -omics datasets.
+        top CpG islands with higher variance were selected for the integration. The top features can be selected in the advanced option parameter N° MOFA input features.
+        MOFA can calculate any desired total number of factors to explain the shared variance between the -omics datasets.
         Other parameters, customizable in the interface, include Convergence mode, freqELBO, and
         maxiter. Our implementation of MOFA included an automatized optimization of the total number of
         factors. It runs the MOFA algorithm with an increasing number of factors, stopping the iteration

@@ -54,33 +54,7 @@
         <a href="/biomiX-release/#about-us">About us</a>
     </div>
 
-    <h2 id="mofa-integration">MOFA Integration</h2>
-
-    <h3 id="mofa-analysis">MOFA Analysis</h3>
-    <p>MOFA was used according to the webpage developer indications
-        (<a href="https://biofam.github.io/MOFA2/">https://biofam.github.io/MOFA2/</a>) with normalized input data and reduced feature size.
-        The transcriptome data are normalized by the Variance Stabilising Transformation (VST) function in R
-        to make the data approximately homoskedastic. The top 5000 genes with higher variance in
-        normalized data are selected for the MOFA integration. The metabolomics data were transformed in
-        the pipeline using a log function to improve their Gaussian distribution. All peaks are used in the
-        analysis. The methylomics data didn't undergo any transformation, but like transcriptomics, only the
-        top 5000 CpG islands with higher variance were selected for the integration. MOFA can calculate
-        any desired total number of factors to explain the shared variance between the -omics datasets.
-        Other parameters, customizable in the interface, include Convergence mode, freqELBO, and
-        maxiter. Our implementation of MOFA included an automatized optimization of the total number of
-        factors. It runs the MOFA algorithm with an increasing number of factors, stopping the iteration
-        when at least three models showed the last MOFA factor explaining less than 1% of the variability
-        of the data. Only the top 3 models in separating our two conditions are maintained. For each
-        calculated factor in each model is determined how it can discriminate statistically between the two
-        groups. A non-parametric Mann-Whitney test tests the factor value distribution between the two
-        groups of samples correcting the p.values through the FDR method. The models selected are the
-        ones with the higher number of discriminating MOFA factors, and later comparing the p.adj values.</p>
-
-    <div class="center">
-        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/disegno.svg?raw=true" alt="MOFA Image">
-    </div>
-
-    <h3 id="mofa-factors-interpretation">MOFA Factors Interpretation</h3>
+    <h2 id="mofa-factors-interpretation">MOFA Factors Interpretation</h2>
 
     <p>Both automatic and not automatic MOFA analysis
         includes three methods to ease the user interpretation of the discriminating MOFA factors.</p>

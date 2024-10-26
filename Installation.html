@@ -73,8 +73,8 @@
         <li>Download Biomix here:  <a href="https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip">https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip </a> and decompress it. <strong>Installation in the Desktop directory is strongly recommended.</strong>
             <pre><code><strong>Bash terminal commands</strong>
 cd
- wget https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip
- unzip -q Biomix2.3.zip
+wget https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip
+unzip -q Biomix2.4.zip
 </code></pre>
         </li>
         <li>BiomiX uses conda to install the R and Python package dependencies. Install conda from the website: <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a> or type on the bash
@@ -99,8 +99,8 @@ bash Miniconda3-py310_23.3.1-0-Linux-x86_64.sh
         <li>Download Biomix <a href="https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip">https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip </a> and decompress it.  <strong> Installation in the home directory is strongly recommended.</strong>
 <pre><code><strong>Windows terminal commands</strong>
 cd
- wget https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip
- Unzip the Biomix2.4.zip file
+wget https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip
+Unzip the Biomix2.4.zip file
 </code></pre>
         </li>
         <li>BiomiX uses conda to install the R and Python package dependencies. Install conda from the website <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a></li>
@@ -126,13 +126,13 @@ Unzip the Biomix2.4.zip file
         <li>Open the terminal and run the following lines</li>
         <pre><code>
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh) #Installation brew
-            conda create -n BiomiX-env python=3.9 -y #Create BiomiX environment
-            conda activate BiomiX-env #Activation conda environment
-            conda config --add channels conda-forge #Add forge channel to conda repositories
-            conda install -c conda-forge r-base=4.4.1 -y #Installation R
-            conda install conda-forge::glib=2.82.1 -y #Installation glib
-            brew install libgit2 #installation litgit2
-            python3 /your/path/to/BiomiX2.4/_INSTALL/BiomiX_INSTALL_OS.py #Start the automatic installation.
+conda create -n BiomiX-env python=3.9 -y #Create BiomiX environment
+conda activate BiomiX-env #Activation conda environment
+conda config --add channels conda-forge #Add forge channel to conda repositories
+conda install -c conda-forge r-base=4.4.1 -y #Installation R
+conda install conda-forge::glib=2.82.1 -y #Installation glib
+brew install libgit2 #installation litgit2
+python3 /your/path/to/BiomiX2.4/_INSTALL/BiomiX_INSTALL_OS.py #Start the automatic installation.
         </code></pre>
         <li>Run the BiomiX_INSTALL_OS.sh script within the _INSTALL folder and wait until the end of the installation.</li>
         <li>Run the Biomix_macos_exe.sh script within the BiomiX2.4 folder to open BiomiX and start your analysis.
@@ -147,8 +147,41 @@ Unzip the Biomix2.4.zip file
         <h3 id="troubleshooting">Troubleshooting</h3>
         <h4 id="-modulenotfounderror-no-module-named-package-name-"><strong>ModuleNotFoundError: No module named 'package name'</strong></h4>
         <p>It happens during the conda installation "step 2" because the Python installed on your computer doesn't have it. This can be fixed by typing in the terminal: <strong>pip install 'package name'</strong></p>
-        <h4 id="biomix_install_windows-bat-or-biomix_install_linux-sh-not-working">BiomiX_INSTALL_WINDOWS.bat or BiomiX_INSTALL_LINUX.sh not working</h4>
-        <p>It can happen that because of different packages already installed something conflict can arise. We suggest you visit the <a href="Alternative_Installation.html">alternative installation guide</a>, for a step-by-step installation.</p>
+        <h4 id="Error-in-library(Package)"><strong>Error in library ("Package"): No package named "Package"</strong></h4>
+        <p>BiomiX uses Conda plus R packages from the github repositories to ensure a close virtual environment to avoid error because of package updated. Unfortunately some package in LinuX or MACOS installation can fail because of external libraries to install in the terminal. To solve this error is possible to open the R environment within the conda BiomiX-environment</p>
+        <pre><code><strong>Open the MAC-OS/Windows/Linux terminal and insert these commands</strong>
+cd
+conda activate BiomiX-env
+R (Linux-MacOS) or R.exe (windows)
+install.packages("Package")
+library("Package")
+</code></pre>
+        <p>If the install.packages or the library functions drive errors. The missing package or library will be displayed in the error message. As R packages rely on other R packages to work, it is important to detect the dependency failing the installation to solve it.
+                    <pre><code><strong>Error output example</strong>
+Error in library ("tidyverse"): No package named "tidyverse"
+Open the R Conda BiomiX environment as previouly mentioned
+install.packages("devtools")
+<strong>Output-> </strong> Error: dependency 'ragg' is not available for package tidyverse'
+install.packages("ragg")
+<strong>Output-> </strong> Error: dependency 'systemfonts' is not available for package ragg'
+install.packages("systemfonts")
+<strong>Output-> </strong>
+Configuration failed to find the fontconfig freetype2 library. Try installing:
+deb: libfontconfig1-dev (Debian, Ubuntu, etc)
+rpm: fontconfig-devel (Fedora, EPEL)
+csw: fontconfig_dev (Solaris)
+brew: freetype (OSX)
+If fontconfig freetype2 is already installed, check that 'pkg-config' is in your
+PATH and PKG_CONFIG_PATH contains a fontconfig freetype2.pc file. If pkg-config
+is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
+R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
+-------------------------- [ERROR MESSAGE] ---------------------------
+:1:10: fatal error: fontconfig/fontconfig.h: No such file or directory
+compilation terminated.
+
+<strong>Solution: </strong> brew install freetype (MacOS), sudo apt-get install libfontconfig1-dev (Debian, Ubuntu, etc)
+</code></pre>installed If it is an R package try the install.packages or the library functions to identify the</p>
+
     </div>
 
 </body>

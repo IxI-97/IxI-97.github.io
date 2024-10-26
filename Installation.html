@@ -70,11 +70,11 @@
 
     <h3 id="linux-os">Linux OS</h3>
     <ol>
-        <li>Download Biomix here:  <a href="https://github.com/IxI-97/BiomiX/releases/download/v2.2.1/BiomiX2.3.zip">https://github.com/IxI-97/BiomiX/releases/download/v2.2.1/BiomiX2.3.zip </a> and decompress it. Installation in the Desktop directory is strongly recommended.
+        <li>Download Biomix here:  <a href="https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip">https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip </a> and decompress it. <strong>Installation in the Desktop directory is strongly recommended.</strong>
             <pre><code><strong>Bash terminal commands</strong>
 cd
-wget https://github.com/IxI-97/BiomiX/releases/download/v2.2.1/BiomiX2.3.zip
-unzip -q Biomix2.3.zip
+ wget https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip
+ unzip -q Biomix2.3.zip
 </code></pre>
         </li>
         <li>BiomiX uses conda to install the R and Python package dependencies. Install conda from the website: <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a> or type on the bash
@@ -84,11 +84,11 @@ bash Miniconda3-py310_23.3.1-0-Linux-x86_64.sh
         </li>
         <li>Follow the instructions, selecting conda init = yes. Close and reopen the bash terminal.</li>
         <li>Run the BiomiX_INSTALL_LINUX.sh script within the _INSTALL folder and wait until the end of the installation.
-            <pre><code>./path/to/BiomiX2.3/_INSTALL/BiomiX_INSTALL_LINUX.sh
+            <pre><code>./path/to/BiomiX2.4/_INSTALL/BiomiX_INSTALL_LINUX.sh
 </code></pre>
         </li>
-        <li>Run the Biomix_exe.sh script within the BiomiX2.3 folder to open BiomiX and start your analysis.
-            <pre><code>./path/to/BiomiX2.3/Biomix_exe.sh
+        <li>Run the Biomix_exe.sh script within the BiomiX2.4 folder to open BiomiX and start your analysis.
+            <pre><code>./path/to/BiomiX2.4/Biomix_linux_exe.sh
 </code></pre>
         </li>
         <li>Enjoy BiomiX!</li>
@@ -96,11 +96,11 @@ bash Miniconda3-py310_23.3.1-0-Linux-x86_64.sh
 
     <h3 id="windows-os">Windows OS</h3>
     <ol>
-        <li>Download Biomix <a href="https://github.com/IxI-97/BiomiX/releases/download/v2.2.1/BiomiX2.3.zip">https://github.com/IxI-97/BiomiX/releases/download/v2.2.1/BiomiX2.3.zip </a> and decompress it. The installation in the home directory is suggested.
+        <li>Download Biomix <a href="https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip">https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip </a> and decompress it.  <strong> Installation in the home directory is strongly recommended.</strong>
 <pre><code><strong>Windows terminal commands</strong>
 cd
-wget https://github.com/IxI-97/BiomiX/releases/download/v2.2.1/BiomiX2.3.zip
-Unzip the Biomix2.3.zip file
+ wget https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip
+ Unzip the Biomix2.4.zip file
 </code></pre>
         </li>
         <li>BiomiX uses conda to install the R and Python package dependencies. Install conda from the website <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a></li>
@@ -111,24 +111,36 @@ Unzip the Biomix2.3.zip file
         <li>Enjoy BiomiX!</li>
     </ol>
 
-        <h3 id="windows-os">Mac OS</h3>
+        <h3 id="MAC-OS">Mac-OS "Beta-version"</h3>
     <ol>
-        <li>Download Biomix here: https://github.com/IxI-97/BiomiX/releases/download/v2.2.1/BiomiX2.3.zip and decompress it (by application e.g. Winzip or terminal cmd). The installation in the Desktop directory is suggested.
+        <li>Download Biomix here: <a href="https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip">https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip </a> and decompress it (by application e.g. Winzip or terminal cmd). <strong> Installation in the home directory is strongly recommended.</strong>
             <pre><code><strong>MAC OS terminal commands</strong>
 cd
-wget https://github.com/IxI-97/BiomiX/releases/download/v2.2.1/BiomiX2.3.zip
-Unzip the Biomix2.3.zip file
+wget https://github.com/IxI-97/BiomiX/releases/download/v2.4/BiomiX2.4.zip
+Unzip the Biomix2.4.zip file
 </code></pre>
         </li>
         <li>BiomiX uses conda to install the R and Python package dependencies. Install conda from the website <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a></li>
         <li>Follow the installation instructions</li>
-        <li>Open the terminal</li>
-        <li>Run the BiomiX_INSTALL_OS.sh script within the _INSTALL folder and wait until the end of the installation.
-                    <pre><code>./path/to/BiomiX2.3/_INSTALL/BiomiX_INSTALL_OS.sh</code></pre>
-        </li>
-        <li>Run the Biomix_exe.sh script within the BiomiX2.3 folder to open BiomiX and start your analysis.
-            <pre><code>./path/to/BiomiX2.3/Biomix_exe.sh  </code></pre>
+        <li> Installation CMake on the Mac OS device <a href="https://gist.github.com/fscm/29fd23093221cf4d96ccfaac5a1a5c90">CMake installation instructions</a></li>
+        <li>Open the terminal and run the following lines</li>
+        <pre><code>
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh) #Installation brew
+            conda create -n BiomiX-env python=3.9 -y #Create BiomiX environment
+            conda activate BiomiX-env #Activation conda environment
+            conda config --add channels conda-forge #Add forge channel to conda repositories
+            conda install -c conda-forge r-base=4.4.1 -y #Installation R
+            conda install conda-forge::glib=2.82.1 -y #Installation glib
+            brew install libgit2 #installation litgit2
+            python3 /your/path/to/BiomiX2.4/_INSTALL/BiomiX_INSTALL_OS.py #Start the automatic installation.
+        </code></pre>
+        <li>Run the BiomiX_INSTALL_OS.sh script within the _INSTALL folder and wait until the end of the installation.</li>
+        <li>Run the Biomix_macos_exe.sh script within the BiomiX2.4 folder to open BiomiX and start your analysis.
+            <pre><code>./path/to/BiomiX2.4/Biomix_macos_exe.sh  </code></pre>
         <li>Enjoy BiomiX!</li>
+
+        <li><strong>Important notes:</strong> The MacOS beta version is less stable than linux and windows version because of the differences among MacOS M1/M2 and Intel version. Please help us to report any bug to improve the MacOS installation here: <a href="https://github.com/IxI-97/BiomiX/issues">GitHub issues BiomiX </a> or by mail to cristian.iperi@univ-brest.fr. BiomiX is actively implemented, so we answer quickly :)</li>
+
     </ol>
 
     <div class="troubleshooting">

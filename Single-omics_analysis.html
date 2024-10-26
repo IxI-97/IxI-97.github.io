@@ -93,17 +93,10 @@
     
     <h3 id="transcriptomics">Transcriptomics</h3>
 
-    <h4 id="input-information">Input Information</h4>
-    <p>BiomiX analyses the expression matrix to quantify the expression difference between two groups of samples discriminating automatically between raw counts, analyzed using the Deseq package, and normalized counts, analyzed by Limma package. Biomix requires an expression matrix <strong>Msg</strong> where the columns <strong>s</strong> represent the samples while the rows <strong>g</strong> contain the genes in Ensembl or gene names format.</p>
+    <h4 id="Single-Omics-Analysis">Single Omics Analysis</h4>
+    <p>The analysis identifies differentially expressed genes (DEGs) along with their statistics (Log2FC and adjusted p-values), and provides visualizations such as volcano plots and heatmaps. If SEX and GENDER columns are included in the metadata, they will be used to adjust the DESeq2 or Limma model. The default thresholds for DEGs are set to Log2FC > 0.5 and adjusted p-value < 0.05.</p>
 
-    <p>BiomiX is developed to deconvolute matrices containing samples from different experiments and select only the ones the user wants to analyze. For example, analyze only B cells in a matrix containing the expression of B cells, T cells, Neutrophils, and Monocytes.</p>
-
-    <p>The tool has been developed to accept both formats and to provide input in MOFA including only the ID number to allow integration with different omics. So if you have a convoluted matrix it is enough to run the DGE analysis, cross the selection option and use in the label the name of the tissue. BiomiX will look in the <strong>SAMPLE_TYPE</strong> column and filter on the <strong>tissue_name</strong>.</p>
-
-    <h4 id="the-analysis">The Analysis</h4>
-    <p>The analysis highlights the differentially expressed genes (DEG), their Log2FC and p.adj plus pff reports containing volcano plots, heatmaps, and gene variances. If sex and gender are available in the metadata these will be automatically used to correct the Deseq2 or Limma model. The default thresholds to consider the differentially expressed genes were set to Log2FC > 0.5 and p.adj < 0.05.</p>
-
-    <p>The enrichment of biological processes in the results is explored in the R version of EnrichR. Moreover, pre-treated output files are produced to carry out the gene set enrichment analysis using GSEA or EnrichR. The expression matrix is also normalized by variance stabilizing transformation (vst) for data visualization and MOFA integration.</p>
+    <p>Biological process enrichment is explored using the R version of EnrichR, with options to export data for external tools such as GSEA (https://www.gsea-msigdb.org/gsea/downloads.jsp) and EnrichR (https://maayanlab.cloud/Enrichr/). Within the Preview-QC visualization, users can choose to transform the data: if transformed, DGE is performed with Limma; if not, and the expression matrix contains raw counts, DESeq2 is used instead. The transformed data are then used as input for MOFA integration. To optimize analysis speed, only the most variable genes are selected (5000 by default, customizable in the MOFA section of the advanced options).</p>
 
     <div align="center">
         <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Transcriptomics.svg?raw=true">

@@ -160,14 +160,16 @@ library("Package") #Loading the installed package
                     <pre><code>
 <strong>Error output example</strong>
 Error in library ("tidyverse"): No package named "tidyverse"
-#Open the R Conda BiomiX environment as previously mentioned
-install.packages("devtools")
-<strong>Output-> </strong> Error: dependency 'ragg' is not available for package tidyverse'
-install.packages("ragg")
-<strong>Output-> </strong> Error: dependency 'systemfonts' is not available for package ragg'
-install.packages("systemfonts")
+#Action:Open the R Conda BiomiX environment as previously mentioned
 
-<strong>Output-> </strong> Configuration failed to find the fontconfig freetype2 library. Try installing:
+install.packages("devtools")
+<strong>Output.:</strong> Error: dependency 'ragg' is not available for package tidyverse'
+                        
+install.packages("ragg")
+<strong>Output: </strong> Error: dependency 'systemfonts' is not available for package ragg'
+
+install.packages("systemfonts")
+<strong>Output:</strong> Configuration failed to find the fontconfig freetype2 library. Try installing:
 deb: libfontconfig1-dev (Debian, Ubuntu, etc)
 rpm: fontconfig-devel (Fedora, EPEL)
 csw: fontconfig_dev (Solaris)

@@ -68,6 +68,29 @@
        <a href="about_us.html">About us</a>
     </div>
 
+    <h3 id="General-guidelines">General guidelines</h3>
+    <p>BiomiX was developed to compare two groups using single and multiple omics. To work properly, the input file must follow a specific format and criteria.</p>
+    <p><strong>Metadata: <strong/></p>
+    <p>BiomiX requires uploading a metadata file in the BiomiX launcher. The first column must contain the sample ID, while the others contain other sample variables.</p>
+    <li><strong>"ID" column (mandatory):</strong> This is the first column and contains the sample ID.</li>
+    <li><strong>"CONDITION" column (mandatory):</strong> This column must contain the sample condition. These conditions will be available for selection in the main interface.</li>
+    <li><strong>"SAMPLE_TYPE" column (optional):</strong> This column is designed for specific conditions. Suppose the input matrix contains samples from different tissues or cells (convoluted matrix), and this source is also defined in the sample ID (e.g., ID = 25658_BLymphocyte, 25658_GlialCells). In that case, this column allows analysis to be performed only on data from the selected tissues or cells.</li>
+    <li><strong>"GENDER" column (optional): </strong> This column can be used to adjust the LIMMA or DESeq2 model for transcriptomics data.</li>
+    <li><strong>"AGE" column (optional):</strong> This column can also be used to adjust the LIMMA or DESeq2 model for transcriptomics data.</li>
+ 
+<p>Any other metadata column can be used to filter the data via the Metadata section in the advanced options or for the PCA and UMAP preview-QC visualization.</p>
+    
+    <p><strong>Matrix: <strong/></p>
+
+    <p>BiomiX requires an expression matrix where the columns represent the samples and the rows contain the variables.</p>
+    <p><strong>Omics differences: <strong/></p>
+      
+    <li><strong>In transcriptomics,</strong> the variables (genes) should be named using GENE SYMBOL or ENSEMBL ID.</li>
+    <li><strong>In metabolomics,</strong> variables (metabolites) should be named using KEGG, HMDB, or official compound names. If the peaks are not annotated, the format should be "peak_[number]," especially for MS1 and MS2 annotation.</li>
+    <li><strong>In methylomics, </strong> variables must use the EPIC or 450K array code. </li>
+    <li><strong>In Undefined omics, </strong> any variable name is accepted.</li>
+
+    
     <h3 id="transcriptomics">Transcriptomics</h3>
 
     <h4 id="input-information">Input Information</h4>

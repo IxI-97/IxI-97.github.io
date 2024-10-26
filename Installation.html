@@ -125,7 +125,7 @@ Unzip the Biomix2.4.zip file
         <li> Installation CMake on the Mac OS device <a href="https://gist.github.com/fscm/29fd23093221cf4d96ccfaac5a1a5c90">CMake installation instructions</a></li>
         <li>Open the terminal and run the following lines</li>
         <pre><code>
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh) #Installation brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh) #Installation brew
 conda create -n BiomiX-env python=3.9 -y #Create BiomiX environment
 conda activate BiomiX-env #Activation conda environment
 conda config --add channels conda-forge #Add forge channel to conda repositories
@@ -149,24 +149,25 @@ python3 /your/path/to/BiomiX2.4/_INSTALL/BiomiX_INSTALL_OS.py #Start the automat
         <p>It happens during the conda installation "step 2" because the Python installed on your computer doesn't have it. This can be fixed by typing in the terminal: <strong>pip install 'package name'</strong></p>
         <h4 id="Error-in-library(Package)"><strong>Error in library ("Package"): No package named "Package"</strong></h4>
         <p>BiomiX uses Conda plus R packages from the github repositories to ensure a close virtual environment to avoid error because of package updated. Unfortunately some package in LinuX or MACOS installation can fail because of external libraries to install in the terminal. To solve this error is possible to open the R environment within the conda BiomiX-environment</p>
-        <pre><code><strong>Open the MAC-OS/Windows/Linux terminal and insert these commands</strong>
-cd
-conda activate BiomiX-env
-R (Linux-MacOS) or R.exe (windows)
-install.packages("Package")
-library("Package")
+        <pre><code>
+<strong>Open the MAC-OS/Windows/Linux terminal and insert these commands</strong>
+conda activate BiomiX-env #Activates the conda environment
+R (Linux-MacOS) or R.exe (windows) #it opens the R environment
+install.packages("Package") #Function to attempt the package installation 
+library("Package") #Loading the installed package
 </code></pre>
         <p>If the install.packages or the library functions drive errors. The missing package or library will be displayed in the error message. As R packages rely on other R packages to work, it is important to detect the dependency failing the installation to solve it.
-                    <pre><code><strong>Error output example</strong>
+                    <pre><code>
+<strong>Error output example</strong>
 Error in library ("tidyverse"): No package named "tidyverse"
-#Open the R Conda BiomiX environment as previouly mentioned
+#Open the R Conda BiomiX environment as previously mentioned
 install.packages("devtools")
 <strong>Output-> </strong> Error: dependency 'ragg' is not available for package tidyverse'
 install.packages("ragg")
 <strong>Output-> </strong> Error: dependency 'systemfonts' is not available for package ragg'
 install.packages("systemfonts")
-<strong>Output-> </strong>
-Configuration failed to find the fontconfig freetype2 library. Try installing:
+
+<strong>Output-> </strong> Configuration failed to find the fontconfig freetype2 library. Try installing:
 deb: libfontconfig1-dev (Debian, Ubuntu, etc)
 rpm: fontconfig-devel (Fedora, EPEL)
 csw: fontconfig_dev (Solaris)

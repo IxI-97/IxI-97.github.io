@@ -96,7 +96,7 @@
     <h4 id="Single-Omics-Analysis">Single Omics Analysis</h4>
     <p>The analysis identifies differentially expressed genes (DEGs) along with their statistics (Log2FC and adjusted p-values), and provides visualizations such as volcano plots and heatmaps. If SEX and GENDER columns are included in the metadata, they will be used to adjust the DESeq2 or Limma model. The default thresholds for DEGs are set to Log2FC > 0.5 and adjusted p-value < 0.05.</p>
 
-    <p>Biological process enrichment is explored using the R version of EnrichR, with options to export data for external tools such as GSEA <a href="https://www.gsea-msigdb.org/gsea/downloads.jsp"> Link </a> and EnrichR <a href="https://maayanlab.cloud/Enrichr/"> Link </a>. Within the Preview-QC visualization, users can choose to transform the data: if transformed, DGE is performed with Limma; if not, and the expression matrix contains raw counts, DESeq2 is used instead. The transformed data are then used as input for MOFA integration. To optimize analysis speed, only the most variable genes are selected (5000 by default, customizable in the MOFA section of the advanced options).</p>
+    <p>Biological process enrichment is explored using the R version of EnrichR, with options to export data for external tools such as <strong>GSEA</strong> <a href="https://www.gsea-msigdb.org/gsea/downloads.jsp"> Link </a> and <strong>EnrichR</strong> <a href="https://maayanlab.cloud/Enrichr/"> Link </a>. Within the Preview-QC visualization, users can choose to transform the data: if transformed, DGE is performed with Limma; if not, and the expression matrix contains raw counts, DESeq2 is used instead. The transformed data are then used as input for MOFA integration. To optimize analysis speed, only the most variable genes are selected (5000 by default, customizable in the MOFA section of the advanced options).</p>
 
     <div align="center">
         <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Transcriptomics.svg?raw=true">
@@ -107,7 +107,7 @@
 
         <ul>
             <li>
-                <strong>Gene Panel subgrouping:</strong> It is possible to provide a panel of genes within <strong>GENE_PANEL</strong> file, in <strong>Transcriptomics/INPUT</strong> directory. The genes must be in Gene symbol format and tab-delimited (by enter button).
+                <strong>Gene Panel subgrouping:</strong> It is possible to provide a panel of genes within <strong>GENE_PANEL</strong> file, in the <strong>General section of the advanced options</strong> The genes must be in Gene symbol format and tab-delimited (by enter button).
                 <pre><code>GENES_FOR_SUBPOPULATION
 SIGLEC1
 IFIT3
@@ -118,10 +118,10 @@ USP18
 OAS3
 IFI44L
 </code></pre>
-                These genes will build a heatmap containing the expression standard deviation of each specific gene in each sample. This will allow us to classify the condition/disease samples in positive and negative while BiomiX will carry out a differential gene expression analysis comparing the chosen controls and these two groups.
+               These genes will generate a heatmap displaying the expression standard deviation of each specific gene across samples. This enables classification of condition/disease samples into positive and negative groups, while BiomiX performs DGE analysis to compare the chosen controls with these two subgroups
             </li>
             <li>
-                <strong>Subgrouping comparison with other clinical/biological data:</strong> It is possible to add a column named <strong>MARKER</strong> in the metadata containing the classification according to clinical or biological analysis on the samples. This marker can be compared to the subgrouping obtained from the user gene panel to observe similarities or differences.
+            <strong>Clinical or Biological Marker Validation:</strong> Adding a column named <strong>MARKER</strong> in the metadata is possible to classify samples based on clinical or biological marker measurements. This marker classification can then be compared to gene panel subgrouping to observe similarities or differences.
             </li>
         </ul>
 

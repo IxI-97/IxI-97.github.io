@@ -80,7 +80,7 @@
  
 <p>Any other metadata column can be used to filter the data via the Metadata section in the advanced options or for the PCA and UMAP preview-QC visualization.</p>
     
-    <p><strong>Matrix: </strong></p>
+    <h3 id="Matrix"><p><strong>Matrix: </strong></p></h3>
 
     <p>BiomiX requires an expression matrix where the columns represent the samples and the rows contain the variables.</p>
     <p><strong>Omics differences: </strong></p>
@@ -94,7 +94,7 @@
     <h3 id="transcriptomics">Transcriptomics</h3>
 
     <h4 id="Single-Omics-Analysis">Single Omics Analysis</h4>
-    <p>The analysis identifies differentially expressed genes (DEGs) along with their statistics (Log2FC and adjusted p-values), and provides visualizations such as volcano plots and heatmaps. If SEX and GENDER columns are included in the metadata, they will be used to adjust the DESeq2 or Limma model. The default thresholds for DEGs are set to Log2FC > 0.5 and adjusted p-value < 0.05.</p>
+    <p>The transcriptomics single omics analysis identifies differentially expressed genes (DEGs) along with their statistics (Log2FC and adjusted p-values), and provides visualizations such as volcano plots and heatmaps. If <strong>SEX</strong> and <strong>GENDER</strong> columns are included in the metadata, they will be used to adjust the DESeq2 or Limma model. The default thresholds for DEGs are set to Log2FC > 0.5 and adjusted p-value < 0.05.</p>
 
     <p>Biological process enrichment is explored using the R version of EnrichR, with options to export data for external tools such as <strong>GSEA</strong> <a href="https://www.gsea-msigdb.org/gsea/downloads.jsp"> Link </a> and <strong>EnrichR</strong> <a href="https://maayanlab.cloud/Enrichr/"> Link </a>. Within the Preview-QC visualization, users can choose to transform the data: if transformed, DGE is performed with Limma; if not, and the expression matrix contains raw counts, DESeq2 is used instead. The transformed data are then used as input for MOFA integration. To optimize analysis speed, only the most variable genes are selected (5000 by default, customizable in the MOFA section of the advanced options).</p>
 
@@ -140,20 +140,33 @@ IFI44L
 
     <h3 id="metabolomics">Metabolomics</h3>
 
-    <p>BiomiX metabolomics data requires peaks signals matrix <strong>Msg</strong> where the columns <strong>s</strong> represent the samples while the rows <strong>g</strong> contain the arbitrary peak numbers. BiomiX is flexible, allowing annotated and not annotated metabolomics data. If the annotation is required, based on the available information can execute an MS1 annotation (mass/charge ratio and retention time values required) or an MS2 one (fragmentation files . Mzml required).</p>
+    <p>The matrix's peak or metabolite signals are first visualized by preview-QC to decide if and how to transform the data. The transformed signals are then compared among the chosen groups by calculating Log2FC as the log2 ratio of their median peak signals. P-values are calculated using the non-parametric Mann–Whitney test and corrected using the FDR method. The Volcano plot and heatmap display significant metabolites or peaks that are increased or decreased. <strong>Warning:</strong> Please ensure the data matrix is curated to remove variables without biological relevance (e.g., contaminants, poorly reproducible signals) and that instrumental normalization is performed before uploading to BiomiX. All transformed peak or metabolite signals are included for MOFA integration.</p>
 
-    <p>If you have only row .mzML files, to generate the peak signals matrix we strongly suggest this easy R pipeline by Á. Fernández-Ochoa (https://doi.org/10.3390/metabo10010028) or Metaboanalyst.</p>
+    <p>To reveal changes in biological pathways, BiomiX uses methPath v1.0.5 from tidymass v1.0.8 to detect enrichment in metabolic processes among significantly changed metabolites. For deeper analysis, it also prepares ready-to-copy files for input into MetaboAnalyst, one of the most advanced online tools for metabolomics analysis, supporting enrichment and metabolite set enrichment analysis. If transcriptomic results are available in BiomiX, the platform will automatically integrate metabolomics and transcriptomics data to create files ready for MetaboAnalyst's joint pathway and network analysis.</p>
 
-    <p>The peak signals from the condition/treated samples are compared with the CTRL calculating the Log2FC as the log2 of the ratio between the median peak signal in condition-treated samples/ median peak signal in CTRL for each peak.</p>
+    <p>If you have only raw .mzML files, we strongly recommend using the R pipeline by Á. Fernández-Ochoa (https://doi.org/10.3390/metabo10010028) or MetaboAnalyst to generate the peak signals matrix.</p>
+
 
     <div align="center">
         <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Metabolomics.svg?raw=true">
     </div>
 
-    <p>The significant metabolites increased and reduced are displayed in a volcano plot while a logarithmic transformation is applied to the peak signal matrix for MOFA integration.</p>
+    <div class="additional-features">
+        <h4>Additional Features</h4>
 
-    <p>To unveil the change in biological pathways, BiomiX automatically exploits a methPath v1.0.5 from tidymass v1.0.8 to spot enrichment in the metabolic process among the significantly changed metabolites. Moreover, for a deeper analysis, it prepares ready-to-copy files as input for Metaboanalyst. It is one of the most advanced online tools for metabolomics analysis, including enrichment and Metabolite set enrichment analysis. Autonomously, if transcriptomics results are available in BiomiX analysis will join the metabolomics and transcriptomics results into files copiable on Metaboanalyst to launch joint pathway analysis and network analysis.</p>
+        <p>BiomiX is flexible, supporting the analysis of both targeted (annotated) and untargeted metabolomics data, with the option to analyze untargeted data with or without annotation. The untargeted annotation is based on MS1 annotation (mass/charge ratio “m/z” and retention time values) or MS2 data (MS1 annotation plus raw MS2 fragmentation files in mzML or .mgf format).</p>
 
+        <ul>
+            <li>
+                <strong>Peaks automatic annotation:</strong>
+                <p><i>-Targeted metabolomics:</i> This option supports metabolomics data obtained from any analytical platform such as LC-MS, GC-MS, CE-MS or NMR, provided the metabolites' biological identities are available. Despite the annotation here is not performed the choice of the proper metabolite identifier (HMDB or KEGG) is required for biological pathway analysis. Also the Iupac compound name option is available but will not perform any biological pathway analysis.</p>
+                <p><i>-MS1 annotation (Untargeted HRMS: High-resolution mass spectrometry):</i> Users can upload MS1 files, containing mass-to-charge ratio (m/z). BiomiX exploits the CEU Mass Mediator database to match the m/z of the metabolomics peaks with those provided by the database, reporting the best matches for each peak. The MS1 m/z match is set by default to a 15-ppm error for positive mode, but neutral and negative modes are also available. The adducts available in the positive mode include M+H, H+2H, H+NA, H+NH4, and M+H-H2O, and in the negative mode, they include M-H, M-Cl, M+FA-H, and M-H-H2O. By default, all available MS1 databases are examined (the Human Metabolome Database [HBMD], Lipidmaps, Metlin, and Kegg), but their use is customizable. The user should carefully review both the databases and parameters according to the dataset.</p>
+                <p><i>MS1 and DDA-MS/MS annotation (.mzML and .mgf files) (Untargeted HRMS):</i> Same MS1 annotation pipeline including additional steps. The fragmentation files (.mzML or .mgf) are crossed with HMDB, MassBank, and MoNA databases to match each fragmentation spectra in the samples with those available in these databases. These matches are available in the results folder. The annotation based on the fragmentation spectra MS/MS (MS2) retrieved in this step will replace those obtained based on the MS1 annotation because of its higher reliability.</p>
+            </li>
+            <li> 
+                <p><strong>Sample type filtering:</strong> BiomiX examines the lists containing previously identified or predicted metabolites in the HBMD to filter metabolites at the same time associated with one identical peak for retaining those already identified or spotted in a type of specimen. These include plasma, urine, saliva, cerebrospinal fluid, feces, sweat, breast milk, bile and amniotic fluid samples.</p>
+        </ul>
+                
     <h3 id="methylomics">Methylomics</h3>
 
     <p>Biomix requires an expression matrix <strong>Msg</strong> where the columns <strong>s</strong> represent the samples while the rows <strong>g</strong> contain the CpG island annotation. The matrix must contain the beta-values, if not available, these can be obtained by the minfi R package. The Differential methylation analysis (DMA) is performed using the ChAMP database, providing the results of the CpG island hypermethylated and hypomethylated with a volcano plot. The threshold has been set as default to the beta value change (Δbeta) > |0.15| and p.adj < 0.05.</p>

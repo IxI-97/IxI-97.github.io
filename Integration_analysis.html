@@ -58,24 +58,10 @@
     <h2 id="mofa-integration">MOFA Integration</h2>
 
     <h3 id="mofa-analysis">MOFA Analysis</h3>
-    <p>MOFA was used according to the webpage developer indications
-        (<a href="https://biofam.github.io/MOFA2/">https://biofam.github.io/MOFA2/</a>) with normalized input data and reduced feature size.
-        The transcriptome data are normalized by the Variance Stabilising Transformation (VST) function in R
-        to make the data approximately homoskedastic. The top genes with higher variance in
-        normalized data are selected for the MOFA integration. The metabolomics data were transformed in
-        the pipeline using a log function to improve their Gaussian distribution. All peaks are used in the
-        analysis. The methylomics data didn't undergo any transformation, but like transcriptomics, only the
-        top CpG islands with higher variance were selected for the integration. The top features can be selected in the advanced option parameter N° MOFA input features.
-        MOFA can calculate any desired total number of factors to explain the shared variance between the -omics datasets.
-        Other parameters, customizable in the interface, include Convergence mode, freqELBO, and
-        maxiter. Our implementation of MOFA included an automatized optimization of the total number of
-        factors. It runs the MOFA algorithm with an increasing number of factors, stopping the iteration
-        when at least three models showed the last MOFA factor explaining less than 1% of the variability
-        of the data. Only the top 3 models in separating our two conditions are maintained. For each
-        calculated factor in each model is determined how it can discriminate statistically between the two
-        groups. A non-parametric Mann-Whitney test tests the factor value distribution between the two
-        groups of samples correcting the p.values through the FDR method. The models selected are the
-        ones with the higher number of discriminating MOFA factors, and later comparing the p.adj values.</p>
+    <p>MOFA is used in BiomiX following developer guidelines,
+        (<a href="https://biofam.github.io/MOFA2/">https://biofam.github.io/MOFA2/</a>) with transformed data inputs and reduced feature size. Transformation methods depend on the omics type: transcriptomics data use variance-stabilizing transformation, metabolomics data use log transformation to approximate Gaussian distribution, and methylomics data need no transformation. Top genes and CpG islands with the highest variance are selected for MOFA integration, except for metabolomics, where fewer peaks are typically included.</p>
+
+    <p>BiomiX’s MOFA implementation allows customization of parameters like convergence speed, Evidence Lower Bound frequency, and maximum iterations. An automated tuning mode optimizes the total factor count, stopping when three models have a factor explaining less than 1% of variance. The top three models, prioritizing those with more statistically significant discriminant factors, are selected. Each model’s factors are tested with a Mann–Whitney test, with p-values adjusted by FDR method.</p>
 
     <div class="center">
         <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/disegno.svg?raw=true" alt="MOFA Image">
@@ -87,19 +73,9 @@
     <p>Both automatic and not automatic MOFA analysis
         includes three methods to ease the user interpretation of the discriminating MOFA factors.</p>
 
-    <p><strong>Correlation analysis:</strong> Users can upload a matrix containing binary or numerical clinical features to
-        integrate into the MOFA model. The numerical data are correlated through a Pearson correlation.
-        The binary clinical data are analysed using the Wilcoxon test after dividing the groups into positive
-        or negative categories. The nominal p.values were corrected using the Benjamini-Hochberg method.</p>
+    <p><strong>Correlation analysis:</strong> Users can upload a matrix containing binary or numerical clinical features to integrate into the MOFA model. The numerical data are correlated through a Pearson correlation with each MOFA factor, while the binary clinical data are analyzed using the Wilcoxon test after dividing the groups into positive and negative categories. The nominal p-values are corrected using the Benjamini–Hochberg method.</p>
 
-    <p><strong>Pathway analysis:</strong> BiomiX retrieves the top contributing genes, metabolites and CpG island for
-        discriminating factors in each MOFA model. Depending on the type of omics data is selected an R
-        package to highlight if there is an enrichment of some biological or metabolic pathway within the
-        enriched genes, metabolites and CpG island. The genes are analysed by EnrichR using the
-        "Reactome", "GO biological process" and "CODE and ChEA consensus TFs from ChIP-X"
-        libraries, while the metabolites are analysed through MetPath using the KEGG and HMDB
-        databases. The CpG islands are associated with their genes, if it exists and is examined through
-        EnrichR.</p>
+    <p><strong>Pathway analysis:</strong>BiomiX identifies the top contributing genes, metabolites, and CpG islands for discriminating factors in each MOFA model. According to the omics data type, BiomiX selects an R package to determine if a biological or metabolic pathway is enriched within these genes, metabolites, or CpG islands. Genes are analyzed with EnrichR using Reactome, Biological Process, Encyclopedia of DNA Elements (ENCODE), and ChIP-X Enrichment Analysis (ChEA) transcription factor libraries. Metabolites are assessed via MetPath using the KEGG and HMDB databases. CpG islands, when linked to associated genes, are also analyzed using EnrichR.</p>
 
     <p><strong>Pubmed bibliography research:</strong> For each discriminating factor in each MOFA model, top contributing genes, metabolites, and CpG island genes are used for PubMed searches to gain insights into factor identities. The search algorithm operates on three levels, prioritizing abstracts that combine more multiomic contributors. At the first level, abstracts include at least one of the top ten contributors; at the second level, abstracts contain at least one contributor from any two omics (e.g., transcriptomics–metabolomics); and the third level includes abstracts with at least one contributor from a single omics.</p>
     <p>The output is a .TSV file with PubMed articles, total and individual contributor matches, DOIs, and keywords. Since author-provided keywords are limited, BiomiX performs additional text-mining with litsearchr v1.0.0, generating a vocabulary of frequent word combinations filtered against Gene Ontology and human phenotype terms. The top 15 terms are included in the .TSV file, along with a final word frequency analysis across all abstracts retrieved from each level.</p>

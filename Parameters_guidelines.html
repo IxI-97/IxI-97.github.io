@@ -678,13 +678,13 @@
     <li><strong>mz match MS1/2.</strong> Mass charge ratio tolerance for the match between MS1 annotation and the fragmentation spectra MS2 provided within the .mzml or .mgf files.</li>
     <li><strong>RT match MS1/2.</strong> Retention time tolerance for the match between MS1 annotation and the fragmentation spectra MS2 provided within the .mzml or .mgf files.</li>
     <li><strong>Column.</strong> Type of column used in the liquid chromatography.</li>
-    <li><strong>Databases MS2.</strong>  Databases consulted by the MS2 annotation (By Tidymass).</li>
+    <li><strong>Databases MS2.</strong>  Databases consulted by the MS2 annotation via Tidymass package. Availables: HMDB, MONA, MASSBANK.It is possible here to set up a priority, where the database having the higher priority will annotate first the unannotated peaks, if another annotation is identified in another database will be discarded and not replaced with the one already available.</li>
     <li><strong>MS2 directory</strong> Directory containing the fragmentation spectra (.mzml or .mgf)</li>
+
+    <p>The other option not mentioned here are reported in the MS1 section, as they are involved in the MS1 annotation before the MS2 one.</p>
     <br>
     <br>
-    <div align="center">
-        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Advanced_1.svg?raw=true" width="900" height="600">
-    </div>
+ 
     <h3 id="Metadata">Advanced options interface (Metadata section):</h3>
     <li><strong>Column name</strong> Column used for the sample filtering</li>
     <li><strong>Column name</strong> Type of data in the defined column</li>
@@ -698,15 +698,15 @@
     <h3 id="MOFA">Advanced options interface (MOFA section):</h3>
     <li><strong>Max iteration.</strong> Maximum number of MOFA iterations in the model training.</li>
     <li><strong>Convergence mode.</strong> Speed to train the MOFA model. The longer the more accurate.</li>
-    <li><strong>Threshold contribution weight.</strong> Threshold to isolate the top MOFA factor contributors. Among the 5% top percent contributors (prefiltered by BiomiX) the user can define a contribution threshold set to 0.5 by default. </li>
+    <li><strong>Threshold contribution weight.</strong> Threshold to isolate the top MOFA factor contributors. Among the 5% top percent contributors (prefiltered by BiomiX). The contributors are normalized based on the highest contributor, resulting in scores ranging from 0 to 1. The user can define a contribution threshold to reduce the number of contributors to examine; this threshold is set to 0.5 by default.</li>
     <li><strong>Type of research (Bibliography).</strong> The type of document where the contributors will be researched in Pubmed. Abstract/Title or Text word.</li>
-    <li><strong>N° articles (Bibliography).</strong> Number of articles consulted by BiomiX to select articles related to the significant factors. Attention, Pubmed server has a max number of request and the research of too many contributors in too many articles can drive the request interruption with the server. In this case reduce the number of articles consulted or number of contributors researched.</li>
-    <li><strong>N° top contributors (Bibliography).</strong> Top contributors of each omics researched in the PubMed abstracts.</li>
+    <li><strong>N° articles (Bibliography).</strong> Number of articles consulted by BiomiX to select articles related to the significant factors. Attention, Pubmed server has a max number of request and the research of too many contributors in too many articles can drive the request interruption with the server. In this case reduce the number of articles consulted or number of contributors researched.There are 300 articles retrived by default.</li>
+    <li><strong>N° top contributors (Bibliography).</strong> Top contributors of each omics researched in the PubMed abstracts. Ten contributors are selected by default</li>
     <li><strong>N° keywords extracted (Bibliography).</strong> Number of keywords extracted in each article related to significant MOFA factors. These are the keywords actively extracted selecting the most cited words of the abstract by natural language processing.</li>
     <li><strong>P.adj threshold (Pathway mining).</strong> Adjusted p.value threshold to consider significant a biological pathway.</li>
-    <li><strong>Pathways shown (Pathway mining).</strong> Number of biological pathways visualized as output in the pdf reports.</li>
-    <li><strong>Numerical (Clinical).</strong> Check the box to correlate the clinical data (Numeric) with the significant MOFA factor.</li>
-    <li><strong>Binary (Clinical).</strong> Check the box to correlate the clinical data (Binary) with the significant MOFA factor.</li>
+    <li><strong>Pathways shown (Pathway mining).</strong> Number of biological pathways visualized as output in the pdf reports,, 10 pathways are shown by default.</li>
+    <li><strong>Numerical (Clinical).</strong> Check the box to correlate the clinical data (Numeric) with the significant MOFA factor and then upload the clinical data. The numerical clinical data must be numeric and not categorical.</li>
+    <li><strong>Binary (Clinical).</strong> Check the box to correlate the clinical data (Binary) with the significant MOFA factor. The binary data should be composed by 0 and 1, otherwise using the following binomial label: Yes/No, Male/Female, M/F, m/f, Present/No.</li>
     <li><strong>Save advanced options (Save parameters).</strong> Click on the blue button to save the advanced parameters.</li>
     <br>
     <br>

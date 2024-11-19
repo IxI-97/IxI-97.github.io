@@ -64,7 +64,7 @@
 
     <p>To provide the users with all the tools to understand each omics data and how to analyse them we wrote this detailed guide to address the users to the sources where understand the principles of each omics.</p>
 
-    <h3 id="Transcriptomics">Transcriptomics:</h3>
+    <h2 id="Transcriptomics">Transcriptomics:</h2>
 
     
 
@@ -95,7 +95,7 @@
 
 
     
-    <h3 id="Metabolomics">Metabolomics:</h3>
+    <h2 id="Metabolomics">Metabolomics:</h2>
 
     <p>Metabolomics is the comprehensive study of metabolites—small molecules involved in metabolism—within a biological system. These metabolites reflect the biochemical activities of cells, tissues, or organisms and provide insights into their physiological and pathological states. Here is an explanation of the principles: <a href="https://www.youtube.com/watch?v=D77pACc0uF8&ab_channel=Chemistorian">Link</a></p>
     <p>Metabolomics typically involves the extraction of metabolites from biological samples (e.g., tissues, blood, or urine), followed by analysis using high-throughput techniques such as mass spectrometry (MS) or nuclear magnetic resonance (NMR) spectroscopy. These methods measure the abundance of metabolites, enabling their identification and quantification. Common steps in this analysis include:</p
@@ -103,13 +103,75 @@
     <li><strong>Data generation and Peak Detection::</strong> Identifying metabolite signals in raw data.</li>
     <li><strong>Feature Alignment:</strong> Aligning signals across samples to ensure consistency.</li>
     <li><strong>Normalization:</strong> Correcting for variations in sample processing or instrument performance. </li>
-    <li><strong>Summary table section:</strong> the imputed data modifications can be visualized here</li>   
-    <li><strong>Download section:</strong> the imputed data can be downloaded here</li>
-    <br>
-    <br>
-    <div align="center">
-        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/GIT_imputation.gif?raw=true" width="900" height="600">
-    </div>
+
+     These steps are not included in BiomiX, but a guideline of how perform these steps is reported here: 
+     doi: 10.3390/metabo10010028
+     <a href="https://doi.org/10.3390/metabo10010028">Literature reference</a>
+     <a href="https://www.metaboanalyst.ca/docs/RTutorial.xhtml#2.1%20LC-MS/MS%20Raw%20Spectra%20Processing">Metaboanalyst Raw Spectra Processing</a>
+     <a href="https://api2.xialab.ca/api/download/metaboanalyst/1_LC_MS_Spectra_Processing.pdf">Metaboanalyst Raw Spectra Processing pdf</a>
+
+    <li><strong>Annotation and Identification: </strong> Assigning chemical identities to detected features using databases like HMDB (Human Metabolome Database) or KEGG. </li>
+    <li><strong>Data Distribution and Statistical Analysis: </strong> Metabolomic data often exhibit non-normal distributions and require appropriate statistical tools </li>
+    <li><strong>Pathway Analysis: </strong> Tools like MetaboAnalyst link metabolites to biological pathways for functional insights </li>
+
+    
+
+    <h3>Targeted vs. Untargeted Metabolomics</h3>
+
+    <h4>Targeted Metabolomics</h4>
+    <p>In targeted metabolomics, researchers focus on a predefined set of metabolites, often selected based on prior knowledge or specific hypotheses.</p>
+    <ul>
+        <li><strong>Advantages:</strong> High sensitivity, precision, and quantification accuracy.</li>
+        <li><strong>Applications:</strong> Quantitative analysis of specific pathways or biomarkers, such as glucose levels in diabetes research.</li>
+        <li><strong>Limitations:</strong> Restricted to a limited number of metabolites, potentially missing novel or unexpected findings.</li>
+    </ul>
+
+    <h4>Untargeted Metabolomics</h4>
+    <p>Untargeted metabolomics aims to detect as many metabolites as possible in a sample, providing an unbiased snapshot of the metabolic state.</p>
+    <ul>
+        <li><strong>Advantages:</strong> Comprehensive analysis, enabling the discovery of unknown metabolites and broad profiling of pathways.</li>
+        <li><strong>Applications:</strong> Biomarker discovery, hypothesis generation, and exploration of novel biochemical processes.</li>
+        <li><strong>Limitations:</strong> Lower precision for quantification, challenges in identifying unknown metabolites, and greater complexity in data analysis.</li>
+    </ul>
+    <p><strong>Source image:</strong> <a href="https://www.drugtargetreview.com/article/33033/the-next-revolution-in-stratified-medicine-molecular-phenotyping-with-metabolomics/" target="_blank">https://www.drugtargetreview.com/article/33033/the-next-revolution-in-stratified-medicine-molecular-phenotyping-with-metabolomics/</a></p>
+
+    <h2>Methylomics</h2>
+    <p>Methylomics involves studying DNA methylation, an essential epigenetic modification where methyl groups are added to cytosines, typically in CpG dinucleotides. This modification regulates gene expression and plays a crucial role in development, cellular differentiation, and disease processes such as cancer. The Illumina Infinium HumanMethylation450 BeadChip (450K) and MethylationEPIC BeadChip (EPIC) arrays are widely used platforms for profiling genome-wide DNA methylation.</p>
+    <p><strong>Principles of the techniques:</strong> <a href="https://www.youtube.com/watch?v=lVG04dAAyvY&ab_channel=Illumina" target="_blank">Link</a></p>
+    <p>Common Steps:</p>
+    <ul>
+        <li><strong>Data generation:</strong> Both arrays require bisulfite-converted DNA (~500 ng per sample), where unmethylated cytosines are converted to uracil while methylated cytosines remain unchanged.</li>
+    </ul>
+
+    <h3>450K Array</h3>
+    <ul>
+        <li><strong>Coverage:</strong> The 450K array targets ~485,000 CpG sites, including promoters, gene bodies, and intergenic regions.</li>
+        <li><strong>Target Regions:</strong> Cover CpG islands, shores, shelves, and open seas.</li>
+    </ul>
+
+    <h3>EPIC Array</h3>
+    <ul>
+        <li><strong>Coverage:</strong> The EPIC array extends this coverage to >850,000 CpG sites, adding enhancers and regulatory elements identified by projects like ENCODE and FANTOM.</li>
+        <li><strong>Target Regions:</strong> Both arrays cover CpG islands, shores, shelves, and open seas and include additional enhancer regions and non-CpG methylation sites, improving its utility for diverse studies.</li>
+    </ul>
+
+    <h2>Output Data</h2>
+    <p>The arrays generate beta values (ranging from 0 to 1), representing the fraction of methylation at each CpG site. M-values can also be provided. Before using them in BiomiX, we suggest converting them in R:</p>
+    <pre>
+        <code>
+        → Open R studio
+        if (!require("BiocManager", quietly = TRUE))
+            install.packages("BiocManager")
+        BiocManager::install("lumi")
+
+        library(lumi)
+        m <- read.table("path/to/the/matrix")
+        m <- m2beta(m)
+        write.table(m, file="Matrix_converted_to_beta_value", sep = "\t", quote = FALSE, row.names = FALSE)
+        </code>
+    </pre>
+    <p><strong>Detection p-values:</strong> These ensure the reliability of each site, and poor-quality data can be filtered out.</p>
+
 
 
     <h2 id="Main interface guide">Main interface guide</h2>

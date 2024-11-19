@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     <title>MOFA Integration</title>
     <style>
         body {
@@ -231,7 +233,7 @@
     <li><strong>N° top DE genes in heatmap</strong> Number of top genes(or metabolites) to visualize in the heatmaps. We suggest a value around 25, too many features visualized could disrupt the plot.</li>
     <li><strong>Clustering distance.</strong> Clustering distance used in the heatmaps, both in subgrouping and single omics analysis. Here a guideline for the distance choice:</li>
     
-    <h3>Recommendation Distance Metrics</h3>
+    <h3> Clustering distance Recommendation </h3>
     <ul>
         <li><strong>Euclidean:</strong> Use for normalized continuous data.</li>
         <li><strong>Maximum:</strong> Use when the largest difference in any dimension is critical.</li>
@@ -412,11 +414,13 @@
     </li>
     <li><strong>Use Case:</strong> Suitable for datasets with ordinal or rank-based data.</li>
 </ul>
-
     
-    <li><strong>Clustering methods.</strong> Clustering method used in the heatmaps, both in subgrouping and single omics analysis.</li>
+        
+    <br>
+    <br>
+    <li><strong>Clustering Methods.</strong> Clustering method used in the heatmaps, both in subgrouping and single omics analysis.</li>
 
-    <h1>Clustering Methods</h1>
+    <h2>Clustering Methods</h2>
 <p><strong>Clustering methods</strong> used in the heatmaps, both in subgrouping and single-omics analysis. Here is a guideline about the method choice.</p>
 
 <table border="1">
@@ -648,17 +652,17 @@
 
     <li><strong>Ion mode.</strong> Type of ionization used in the metabolomics data acquisition.</li>
 
-    -Positive ionization: Compounds gain a proton (+H+) or other cations (e.g., Na+, K+) during ionization.
-    -Negative ionization: Compounds lose a proton (−H+) or gain an electron during ionization
-    -Neutral: Neutral species are not directly ionized but can be inferred after processing data from positive and/or negative ion modes (e.g., reconstructing mass of neutral species).
+    <p> -Positive ionization: Compounds gain a proton (+H+) or other cations (e.g., Na+, K+) during ionization.</p>
+    <p>-Negative ionization: Compounds lose a proton (−H+) or gain an electron during ionization</p>
+    <p> -Neutral: Neutral species are not directly ionized but can be inferred after processing data from positive and/or negative ion modes (e.g., reconstructing mass of neutral species).</p>
             
-    <li><strong>M/Z Tolerance ppm.</strong> Ppm tolerance used in the MS1 annotation. 15 ppm by default, its reduction reduce the missannotation but also the ratio of annotated metabolite. The ppm error (accuracy) of the MS method should be taken into account for the choice of this parameter. 
-      <strong>Examples:</strong>
-      -Quadrupole Mass Spectrometer > 100 ppm 
-      -Time-of-Flight (TOF) 1-10 ppm
-      -Orbitrap Mass Spectrometer <1 ppm
-      -Fourier-Transform Ion Cyclotron Resonance (FT-ICR) Sub-ppm (as low as 0.1 ppm in optimal conditions) 
-    It means that m/z values coming from Orbitrap Mass Spectrometer could be match with a ppm = 1.</li>
+    <li><strong>M/Z Tolerance ppm.</strong> Ppm tolerance used in the MS1 annotation. 15 ppm by default, its reduction reduce the missannotation but also the ratio of annotated metabolite. The ppm error (accuracy) of the MS method should be taken into account for the choice of this parameter. </li>
+      <p><strong>Examples:</strong></p>
+      <p>-Quadrupole Mass Spectrometer > 100 ppm </p>
+      <p>-Time-of-Flight (TOF) 1-10 ppm</p>
+      <p>-Orbitrap Mass Spectrometer <1 ppm</p>
+      <p>-Fourier-Transform Ion Cyclotron Resonance (FT-ICR) Sub-ppm (as low as 0.1 ppm in optimal conditions) </p>
+    <p>It means that m/z values coming from Orbitrap Mass Spectrometer could be match with a ppm = 1.</p>
             
     <li><strong>Adduct positive mode.</strong> Type of positive adduct generated during the metabolomics data acquisition. This should take into account the solvent used. Available adducts: M+H, M+2H, M+Na, M+NH4, M+H-H2O.</li>
     <li><strong>Adduct negative mode.</strong> Type of negative adduct generated during the metabolomics data acquisition. This should take into account the solvent used. Available adducts: M-H, M-Cl, M-FA-H, M+NH4, M-H-H2O.</li>
@@ -691,9 +695,6 @@
     <li><strong>Threshold/Factor selected</strong> Threshold to filter the samples (format: ">= 90" / "== 0.56") or specific condition (format: "== male" / "== treated") </li>
     <br>
     <br>
-    <div align="center">
-        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Metadata.png?raw=true" width="900" height="600">
-    </div>
 
     <h3 id="MOFA">Advanced options interface (MOFA section):</h3>
     <li><strong>Max iteration.</strong> Maximum number of MOFA iterations in the model training.</li>
@@ -710,9 +711,7 @@
     <li><strong>Save advanced options (Save parameters).</strong> Click on the blue button to save the advanced parameters.</li>
     <br>
     <br>
-    <div align="center">
-        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/MOFA.png?raw=true" width="900" height="600">
-    </div>
+
 
 </body>
 

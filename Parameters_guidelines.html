@@ -133,6 +133,10 @@
         <li><strong>Applications:</strong> Biomarker discovery, hypothesis generation, and exploration of novel biochemical processes.</li>
         <li><strong>Limitations:</strong> Lower precision for quantification, challenges in identifying unknown metabolites, and greater complexity in data analysis.</li>
     </ul>
+
+    <div align="center">
+        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Detailed_3?raw=true">
+    </div>
     <p><strong>Source image:</strong> <a href="https://www.drugtargetreview.com/article/33033/the-next-revolution-in-stratified-medicine-molecular-phenotyping-with-metabolomics/" target="_blank">https://www.drugtargetreview.com/article/33033/the-next-revolution-in-stratified-medicine-molecular-phenotyping-with-metabolomics/</a></p>
 
     <h2>Methylomics</h2>
@@ -177,8 +181,8 @@
     <h2 id="Main interface guide">Main interface guide</h2>
 
     <p>The main interface structure:</p>
-    <li><strong>Condition.</strong> Group to analyse.</li>
-    <li><strong>Control.</strong> Reference group, compared with the condition one.</li>
+    <li><strong>Condition.</strong> Group to analyse. Group to analyse, it is directly displayed from the Metadata column “CONDITION”. Avoid using spaces in the conditions, i.e (No treated → No_treated)</li>
+    <li><strong>Control.</strong> Reference group, compared with the condition one. Avoid use spaces in the conditions, i.e (No treated → No_treated) .</li>
     <li><strong>Output.</strong> Directory where save the output results of the analysis.</li>
     <p>Omics input grid:</p>
     <li><strong>Input.</strong> Input slot number.</li>
@@ -187,14 +191,14 @@
     <li><strong>Data type.</strong> Select the type of omics uploaded.</li>
     <li><strong>Integration.</strong> Check the box to include those omics in the MOFA integration.</li>
     <li><strong>Label.</strong> Omics name, used to name the output folder and filter the sample based on the sample names.</li>
-    <li><strong>Selection.</strong> If selected filters the samples based on the sample name using a regex derived by the label name.</li>
+    <li><strong>Selection.</strong> If selected filters the samples based on the sample name using a regex derived by the label name. It requires the "SAMPLE_TYPE" column (optional). It supposes the input matrix contains samples from different tissues or cells (convoluted matrix), and this source is also defined in the sample ID (e.g., ID = 25658_BLymphocyte, 25658_GlialCells). In that case, this column allows analysis to be performed only on data from the selected tissues or cells. </li>
     <li><strong>Data upload.</strong> Click on the button to upload the matrix. Here, it is possible to modify the BiomiX format (.tsv,xls,xlsx) matrix. </li>
     <p>Integration grid:</p>
     <li><strong>Integration.</strong> Do you want to perform the integration with the uploaded omics data?.</li>
     <li><strong>Method.</strong> Which integration method? (Only MOFA is available for now).</li>
-    <li><strong>N° Factors.</strong> How many MOFA factors do you want to calculate for the integration? (select 0 for an automatic selection).</li>
-    <li><strong>Factor to explore.</strong> Which factor do you want to explore graphically? (Contributors, heatmap clustering etc...).</li>
-    <li><strong>Omics overlay.</strong> What is the minimum number of omics that a sample should have to be included in the integration?</li>
+    <li><strong>N° Factors.</strong> How many MOFA factors would you like to calculate for the integration? We recommend running the tuned mode (automatic) by selecting 0. Once the top three MOFA models are identified, you can re-run the analysis focusing on the model of interest by selecting the corresponding number of MOFA factors. This step is particularly important for visualizing heatmaps and correlations of the significant factors within the chosen model (select the relevant discriminant factor in within the Factor to explore input).</li>
+    <li><strong>Factor to explore.</strong> Which factor do you want to explore graphically? (Contributors, heatmap clustering etc...). It is suggested to set it to 1 for the first exploratory analysis. When the model and the total number of factors are defined at this point, it is suggested to set this parameter to visualize the factor of interest graphically. </li>
+    <li><strong>Omics overlay.</strong>What is the minimum number of omics a sample must have to be included in the integration? For MOFA, it is crucial to maximize the number of shared samples across the datasets. An omics dataset with significant differences in sample coverage can disproportionately influence the model, causing the predominant feature to be overweighted. To ensure balanced integration, at least 50% of the samples should be shared across all omics.</li>
     <li><strong>Open advance option.</strong> Button to open the advance option interface</li>
     <li><strong>Open BiomiX chatbot.</strong> Button to open the BiomiX chatbot</li>
     <li><strong>Start Analysis.</strong> Button to start the analysis.</li>
@@ -214,30 +218,463 @@
     <h3 id="General">Advanced options interface (General section):</h3>
     <li><strong>Log2FC threshold.</strong> Log2FC threshold value for significant results.</li>
     <li><strong>P.adj threshold.</strong> Adjusted p.value threshold value for significant results.</li>
-    <li><strong>Gene Panel.</strong> Button to upload the gene panel for the subgrouping analysis.</li>
-    <li><strong>Array type.</strong> The type of chip from which the data comes (450K/EPIC).</li>
-    <li><strong>N° of genes within the panel with score > one or two.</strong> Parameters to define the positive/negative subgrouping by the gene panel. The user can modify the number of genes that must have a Z-score > one or two of the control standard deviation</li>
-    <li><strong>Removal of positive control samples.</strong> If checked, the controls positive for the gene panel can be excluded from the downstream analysis.</li>
-    <li><strong>N° top DE genes in heatmap</strong> Number of top genes(or metabolites) to visualize in the heatmaps.</li>
-    <li><strong>Clustering distance.</strong> Clustering distance used in the heatmaps, both in subgrouping and single omics analysis.</li>
-    <li><strong>Clustering methods.</strong> Clustering method used in the heatmaps, both in subgrouping and single omics analysis.</li>
-    <li><strong>CPU threads.</strong> Number of CPU threads used in your PC in parallel.</li>
-    <li><strong>N° MOFA input features.</strong> Number of top features used in the MOFA analysis. It is suggested to use a similar number of features in each omics</li>
-    <br>
-    <br>
+    <li><strong>Gene Panel.</strong> Button to upload the gene panel for the subgrouping analysis. Specifically, the standard deviation score (Z activity score) uses the counts normalized by the number of reads to compare the expression of each gene (g) in each disease or treated sample (s) with the mean expression of the CTRLs divided by the standard deviation of the CTRLs as in the following equation: 
+
     <div align="center">
-        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/General.png?raw=true" width="900" height="600">
+        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Detailed_4?raw=true">
     </div>
+        
+    The higher the standard deviation shift is in a gene, the higher the gene expression is in the condition compared to the CTRLs.</li>
+    <li><strong>Array type.</strong> The type of chip from which the data comes (450K/EPIC).</li>
+    <li><strong>N° of genes within the panel with score > one or two.</strong>  Parameters to define the positive/negative subgrouping by the gene panel. The user can modify the number of genes that must have a Z-score > one or two of the control standard deviation. By default, according to the Kirou score on interferon signal, the samples with three genes with a score > 2 or 10 genes with a score > 1 are labeled positive. We strongly suggest testing different combinations of parameters for the analysis focusing on the subgrouping, as each gene panel may show differences in standard deviation changes. To check if the subgrouping is consistent, it is possible to compare it with the heatmap clustering (Gene_panel_subgroups...pdf).</li>
+    <li><strong>Removal of positive control samples.</strong>  If checked, the controls positive for the gene panel can be excluded from the downstream analysis. This is relevant to exclude controls not respecting certain features (e.i healthy patients with occurring infections spotted as high inflammation)
+    <li><strong>N° top DE genes in heatmap</strong> Number of top genes(or metabolites) to visualize in the heatmaps. We suggest a value around 25, too many features visualized could disrupt the plot.</li>
+    <li><strong>Clustering distance.</strong> Clustering distance used in the heatmaps, both in subgrouping and single omics analysis. Here a guideline for the distance choice:</li>
+    
+    <h3>Recommendation Distance Metrics</h3>
+    <ul>
+        <li><strong>Euclidean:</strong> Use for normalized continuous data.</li>
+        <li><strong>Maximum:</strong> Use when the largest difference in any dimension is critical.</li>
+        <li><strong>Manhattan:</strong> Good for high-dimensional data or when axis-aligned differences matter.</li>
+        <li><strong>Canberra:</strong> Ideal for data with varying scales or sparse datasets.</li>
+        <li><strong>Binary:</strong> Use exclusively for binary data.</li>
+        <li><strong>Minkowski:</strong> Provides flexibility; choose based on p (e.g., Euclidean or Manhattan).</li>
+        <li><strong>Pearson:</strong> Focus on linear relationships in normalized data.</li>
+        <li><strong>Spearman:</strong> Use for monotonic relationships or rank-based data.</li>
+        <li><strong>Kendall:</strong> Best for ordinal data or when robustness to noise is required.</li>
+    </ul>
+
+    <h4>Details</h4>
+
+    <h3>1. Euclidean Distance</h3>
+    <p><strong>Description:</strong> The straight-line distance between two points in a multidimensional space. It is the most commonly used distance metric.</p>
+    <p><strong>Formula:</strong> \(d = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}\)</p>
+    <ul>
+        <li><strong>Pros:</strong>
+            <ul>
+                <li>Intuitive and easy to compute.</li>
+                <li>Works well with continuous and normalized data.</li>
+            </ul>
+        </li>
+        <li><strong>Cons:</strong>
+            <ul>
+                <li>Sensitive to scale and outliers.</li>
+                <li>Assumes all dimensions are equally important.</li>
+            </ul>
+        </li>
+        <li><strong>Use Case:</strong> Suitable when data is continuous and has been normalized or standardized. Avoid for high-dimensional data due to the "curse of dimensionality."</li>
+    </ul>
+
+    <h3>2. Maximum Distance (Chebyshev Distance)</h3>
+    <p><strong>Description:</strong> Measures the maximum absolute difference between dimensions.</p>
+    <p><strong>Formula:</strong> \(d = \max(|x_i - y_i|)\)</p>
+    <ul>
+        <li><strong>Pros:</strong>
+            <ul>
+                <li>Captures the largest difference, making it sensitive to outliers in one dimension.</li>
+                <li>Simple to compute.</li>
+            </ul>
+        </li>
+        <li><strong>Cons:</strong>
+            <ul>
+                <li>Ignores variation in other dimensions.</li>
+                <li>Not ideal for general clustering tasks.</li>
+            </ul>
+        </li>
+        <li><strong>Use Case:</strong> Useful when extreme differences in any one dimension are critical, such as quality control or anomaly detection.</li>
+    </ul>
+
+    <h3>3. Manhattan Distance (Taxicab or City Block Distance)</h3>
+    <p><strong>Description:</strong> The sum of the absolute differences across dimensions.</p>
+    <p><strong>Formula:</strong> \(d = \sum_{i=1}^n |x_i - y_i|\)</p>
+    <ul>
+        <li><strong>Pros:</strong>
+            <ul>
+                <li>Less sensitive to outliers than Euclidean distance.</li>
+                <li>Works well with high-dimensional data.</li>
+            </ul>
+        </li>
+        <li><strong>Cons:</strong>
+            <ul>
+                <li>Sensitive to the scale of data.</li>
+                <li>Assumes all dimensions are equally weighted.</li>
+            </ul>
+        </li>
+        <li><strong>Use Case:</strong> Ideal for high-dimensional data, particularly when differences along each axis are meaningful.</li>
+    </ul>
+
+    <h3>4. Canberra Distance</h3>
+    <p><strong>Description:</strong> A weighted metric where differences are normalized by the sum of absolute values of the variables.</p>
+    <p><strong>Formula:</strong> \(d = \sum_{i=1}^n \frac{|x_i - y_i|}{|x_i| + |y_i|}\)</p>
+    <ul>
+        <li><strong>Pros:</strong>
+            <ul>
+                <li>Gives higher weight to smaller differences.</li>
+                <li>Effective when variables have different scales.</li>
+            </ul>
+        </li>
+        <li><strong>Cons:</strong>
+            <ul>
+                <li>Undefined if any variable has a value of 0.</li>
+                <li>More computationally expensive.</li>
+            </ul>
+        </li>
+        <li><strong>Use Case:</strong> Suitable for sparse data or data with different scales.</li>
+    </ul>
+
+    <h3>5. Binary Distance</h3>
+    <p><strong>Description:</strong> Used for binary data, measuring dissimilarity based on matches (1) and mismatches (0).</p>
+    <ul>
+        <li><strong>Pros:</strong>
+            <ul>
+                <li>Simple and interpretable for binary datasets.</li>
+                <li>Directly applicable to categorical or binary data.</li>
+            </ul>
+        </li>
+        <li><strong>Cons:</strong>
+            <ul>
+                <li>Limited to binary datasets.</li>
+                <li>Ignores magnitude differences in non-binary data.</li>
+            </ul>
+        </li>
+        <li><strong>Use Case:</strong> Ideal for datasets with binary attributes, such as presence/absence matrices.</li>
+    </ul>
+
+    <h3>6. Minkowski Distance</h3>
+<p><strong>Description:</strong> A generalized form of Euclidean and Manhattan distances. It uses a parameter <em>p</em>, where <em>p=2</em> gives Euclidean distance and <em>p=1</em> gives Manhattan distance.</p>
+<p><strong>Formula:</strong> \(d = \left(\sum_{i=1}^n |x_i - y_i|^p\right)^{1/p}\)</p>
+<ul>
+    <li><strong>Pros:</strong>
+        <ul>
+            <li>Flexible; allows customization through <em>p</em>.</li>
+            <li>Includes Euclidean and Manhattan distances as special cases.</li>
+        </ul>
+    </li>
+    <li><strong>Cons:</strong>
+        <ul>
+            <li>Choosing the appropriate <em>p</em> can be non-intuitive.</li>
+            <li>Sensitive to the scale of data.</li>
+        </ul>
+    </li>
+    <li><strong>Use Case:</strong> Use when you want flexibility in defining the distance metric based on the problem.</li>
+</ul>
+
+<h3>7. Pearson Correlation Distance</h3>
+<p><strong>Description:</strong> Measures how well two variables are linearly related. The distance is \(1 - r\), where \(r\) is the Pearson correlation coefficient.</p>
+<ul>
+    <li><strong>Pros:</strong>
+        <ul>
+            <li>Captures linear relationships between variables.</li>
+            <li>Scale-independent.</li>
+        </ul>
+    </li>
+    <li><strong>Cons:</strong>
+        <ul>
+            <li>Assumes a linear relationship.</li>
+            <li>Sensitive to outliers.</li>
+        </ul>
+    </li>
+    <li><strong>Use Case:</strong> Ideal for clustering gene expression data or other datasets where linear relationships are important.</li>
+</ul>
+
+<h3>8. Spearman Correlation Distance</h3>
+<p><strong>Description:</strong> Measures the monotonic relationship between variables. Similar to Pearson but uses ranks instead of raw values.</p>
+<ul>
+    <li><strong>Pros:</strong>
+        <ul>
+            <li>Robust to non-linear relationships.</li>
+            <li>Less sensitive to outliers than Pearson.</li>
+        </ul>
+    </li>
+    <li><strong>Cons:</strong>
+        <ul>
+            <li>Ignores the magnitude of differences.</li>
+            <li>Slightly more complex computation.</li>
+        </ul>
+    </li>
+    <li><strong>Use Case:</strong> Use when relationships between variables are monotonic rather than linear.</li>
+</ul>
+
+<h3>9. Kendall Correlation Distance</h3>
+<p><strong>Description:</strong> Measures ordinal association between two variables by comparing concordant and discordant pairs.</p>
+<ul>
+    <li><strong>Pros:</strong>
+        <ul>
+            <li>Robust to noise and outliers.</li>
+            <li>Effective for ordinal or rank-based data.</li>
+        </ul>
+    </li>
+    <li><strong>Cons:</strong>
+        <ul>
+            <li>Computationally intensive for large datasets.</li>
+            <li>Ignores magnitude differences.</li>
+        </ul>
+    </li>
+    <li><strong>Use Case:</strong> Suitable for datasets with ordinal or rank-based data.</li>
+</ul>
+
+    
+    <li><strong>Clustering methods.</strong> Clustering method used in the heatmaps, both in subgrouping and single omics analysis.</li>
+
+    <h1>Clustering Methods</h1>
+<p><strong>Clustering methods</strong> used in the heatmaps, both in subgrouping and single-omics analysis. Here is a guideline about the method choice.</p>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Pros</th>
+            <th>Cons</th>
+            <th>Best for</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Ward.D/D2</td>
+            <td>Compact clusters, minimizes variance</td>
+            <td>Sensitive to scale/outliers</td>
+            <td>Continuous, normalized data</td>
+        </tr>
+        <tr>
+            <td>Single</td>
+            <td>Handles irregular shapes</td>
+            <td>Prone to chaining</td>
+            <td>Non-elliptical shapes</td>
+        </tr>
+        <tr>
+            <td>Complete</td>
+            <td>Compact clusters, avoids chaining</td>
+            <td>Sensitive to outliers</td>
+            <td>Compact, well-separated clusters</td>
+        </tr>
+        <tr>
+            <td>Average</td>
+            <td>Balances compactness and shape sensitivity</td>
+            <td>May lose precision with irregular clusters</td>
+            <td>General-purpose clustering</td>
+        </tr>
+        <tr>
+            <td>McQuitty</td>
+            <td>Equal cluster importance, simple</td>
+            <td>Assumes equal weight for all clusters</td>
+            <td>Equal-weight clustering scenarios</td>
+        </tr>
+        <tr>
+            <td>Median</td>
+            <td>Robust to outliers, flexible</td>
+            <td>Uneven cluster sizes, harder to interpret</td>
+            <td>Median-based distance datasets</td>
+        </tr>
+        <tr>
+            <td>Centroid</td>
+            <td>Geometrically intuitive clusters</td>
+            <td>Non-hierarchical results possible</td>
+            <td>Centroid-representative data</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>1. Ward’s Method (Ward.D and Ward.D2)</h2>
+<p><strong>Ward.D:</strong> Minimizes the total within-cluster variance by merging clusters that result in the smallest increase in total variance.</p>
+<p><strong>Ward.D2:</strong> A variation of Ward.D that uses squared Euclidean distances for calculating dissimilarity.</p>
+<ul>
+    <li><strong>Pros:</strong>
+        <ul>
+            <li>Produces compact, spherical clusters.</li>
+            <li>Works well for continuous and normalized data.</li>
+            <li>Reduces noise by emphasizing variance minimization.</li>
+        </ul>
+    </li>
+    <li><strong>Cons:</strong>
+        <ul>
+            <li>Sensitive to outliers and scaling of variables.</li>
+            <li>Assumes that clusters have similar sizes and densities.</li>
+        </ul>
+    </li>
+    <li><strong>Use Case:</strong>
+        <ul>
+            <li>Use Ward.D for general hierarchical clustering with continuous data.</li>
+            <li>Use Ward.D2 for clustering tasks where squared distances are more appropriate.</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>2. Single Linkage</h2>
+<p><strong>Description:</strong> Also known as the "nearest neighbor" method, it merges clusters based on the smallest pairwise distance between their points.</p>
+<p><strong>Formula:</strong> \(d(A, B) = \min(d(i, j))\) for all \(i \in A, j \in B\).</p>
+<ul>
+    <li><strong>Pros:</strong>
+        <ul>
+            <li>Can handle non-elliptical shapes (e.g., chaining clusters).</li>
+            <li>Computationally simple.</li>
+        </ul>
+    </li>
+    <li><strong>Cons:</strong>
+        <ul>
+            <li>Prone to "chaining," where distant points may be linked via a series of close intermediate points.</li>
+            <li>Tends to create long, elongated clusters.</li>
+        </ul>
+    </li>
+    <li><strong>Use Case:</strong> Suitable for data with irregular or elongated shapes. Avoid when compact clusters are desired.</li>
+</ul>
+
+
+<h2>3. Complete Linkage</h2>
+<p><strong>Description:</strong> Also known as the "farthest neighbor" method, it merges clusters based on the largest pairwise distance between their points.</p>
+<p><strong>Formula:</strong> \(d(A, B) = \max(d(i, j))\) for all \(i \in A, j \in B\).</p>
+<ul>
+    <li><strong>Pros:</strong>
+        <ul>
+            <li>Produces compact and tightly bound clusters.</li>
+            <li>Less prone to chaining compared to single linkage.</li>
+        </ul>
+    </li>
+    <li><strong>Cons:</strong>
+        <ul>
+            <li>Sensitive to outliers.</li>
+            <li>May break apart elongated clusters.</li>
+        </ul>
+    </li>
+    <li><strong>Use Case:</strong> Best when compact, well-separated clusters are desired. Avoid for datasets with irregular shapes.</li>
+</ul>
+
+<h2>4. Average Linkage (UPGMA)</h2>
+<p><strong>Description:</strong> Merges clusters based on the average pairwise distance between their points.</p>
+<p><strong>Formula:</strong> \(d(A, B) = \frac{1}{|A||B|} \sum_{i \in A, j \in B} d(i, j)\)</p>
+<ul>
+    <li><strong>Pros:</strong>
+        <ul>
+            <li>Balances compactness and sensitivity to cluster shapes.</li>
+            <li>Works well for most datasets, including those with moderate noise.</li>
+        </ul>
+    </li>
+    <li><strong>Cons:</strong>
+        <ul>
+            <li>Assumes equal weights for all clusters, which may not be realistic.</li>
+            <li>Can lose precision with highly irregular clusters.</li>
+        </ul>
+    </li>
+    <li><strong>Use Case:</strong> A general-purpose method suitable for many types of data.</li>
+</ul>
+
+<h2>5. McQuitty’s Method (WPGMA)</h2>
+<p><strong>Description:</strong> A weighted version of average linkage, where the contribution of each cluster to the distance is equal regardless of size.</p>
+<p><strong>Formula:</strong> Similar to UPGMA, but weights are evenly distributed regardless of cluster sizes.</p>
+<ul>
+    <li><strong>Pros:</strong>
+        <ul>
+            <li>Simpler and faster than UPGMA.</li>
+            <li>Treats all clusters equally, regardless of size.</li>
+        </ul>
+    </li>
+    <li><strong>Cons:</strong>
+        <ul>
+            <li>Assumes equal cluster importance, which may not always be appropriate.</li>
+            <li>Less robust than UPGMA.</li>
+        </ul>
+    </li>
+    <li><strong>Use Case:</strong> Useful when equal importance for all clusters is desired.</li>
+</ul>
+
+<h2>6. Median Method (WPGMC)</h2>
+<p><strong>Description:</strong> A weighted method that computes the median distance between clusters to decide merges.</p>
+<p><strong>Formula:</strong> Based on cluster medians rather than means or minima/maxima.</p>
+<ul>
+    <li><strong>Pros:</strong>
+        <ul>
+            <li>Balances robustness and flexibility.</li>
+            <li>Less sensitive to outliers than some other methods.</li>
+        </ul>
+    </li>
+    <li><strong>Cons:</strong>
+        <ul>
+            <li>May create clusters with uneven sizes.</li>
+            <li>Less commonly used and harder to interpret.</li>
+        </ul>
+    </li>
+    <li><strong>Use Case:</strong> Suitable for datasets where median-based distances provide meaningful clustering.</li>
+</ul>
+
+<h2>7. Centroid Method (UPGMC)</h2>
+<p><strong>Description:</strong> Similar to Ward’s method, but uses the centroid of each cluster as the basis for merging.</p>
+<p><strong>Formula:</strong> \(d(A, B) = \|\text{Centroid}_A - \text{Centroid}_B\|\)</p>
+<ul>
+    <li><strong>Pros:</strong>
+        <ul>
+            <li>Produces geometrically interpretable clusters.</li>
+            <li>Suitable for continuous and normalized data.</li>
+        </ul>
+    </li>
+    <li><strong>Cons:</strong>
+        <ul>
+            <li>May create non-hierarchical results if centroids from smaller clusters differ significantly.</li>
+            <li>Sensitive to outliers.</li>
+        </ul>
+    </li>
+    <li><strong>Use Case:</strong> Use for datasets where the centroid offers a meaningful representation of the cluster.</li>
+</ul>
+
+<h2>Summary</h2>
+<p>Each clustering method has its strengths and weaknesses. The best choice depends on the dataset's properties and the goals of the analysis. For example:</p>
+<ul>
+    <li><strong>Ward.D/D2:</strong> Best for compact, spherical clusters and normalized data.</li>
+    <li><strong>Single Linkage:</strong> Effective for irregular or elongated shapes.</li>
+    <li><strong>Complete Linkage:</strong> Suitable for compact and well-separated clusters.</li>
+    <li><strong>Average Linkage:</strong> General-purpose and balances shape sensitivity.</li>
+    <li><strong>McQuitty:</strong> Ideal when equal cluster importance is required.</li>
+    <li><strong>Median:</strong> Robust for uneven sizes and flexible in median-based datasets.</li>
+    <li><strong>Centroid:</strong> Best for datasets where centroid interpretation is meaningful.</li>
+</ul>
+
+            
+    <li><strong>CPU threads.</strong> Number of CPU threads used in your PC in parallel.</li>
+    <li><strong>N° MOFA input features.</strong> Number of top features used in the MOFA analysis. For metabolomics, the number of features typically ranges between 100 and 1000. While there is no upper limit for the number of features selected in MOFA analysis, it is recommended to balance the number of features across the different omics layers to prevent one omic from dominating the analysis. This recommendation also applies to undefined databases, which may include only a few features. Using a similar number of features across omics is advised for more balanced integration. Additionally, it is possible to increase the number of input features to capture more variance from each omic, but this will result in slower computation times.</li>
+    <br>
+    <br>
+
 
     <h3 id="Metabolomics">Advanced options interface (Metabolomics section):</h3>
+    <h4 id="Targeted metabolomics, non-targeted dataset with annotated peaks">Targeted metabolomics:</h4>
+    <p>This option supports metabolomics data obtained from any analytical platform such as LC-MS, Gas chromatography coupled to mass spectrometry (GC-MS), Capillary electrophoresis coupled to mass spectrometry (CE-MS) or Nuclear magnetic resonance (NMR), provided the metabolites' biological identities are available. </p>        
     <li><strong>Metabolite annotation.</strong> Which annotation (HMDB, KEGG, compound name) are used in the uploaded annotated metabolomics matrices.</li>
+
+    <h4 id="MS1 annotation from Untargeted High Resolution Mass Spectrometry (HRMS) data">MS1:</h4>
+    <p>This option supports MS1 annotation, where users can upload MS1 files, containing mass-to-charge ratio (m/z) and retention type. The retention time, despite is not used directly in the ms1 annotation but is only copy pasted in the results. This analysis allows the annotation based only on the m/z of the metabolites (called annotation of Level 3). </p>        
+
+    <div align="center">
+        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Detailed_5?raw=true">
+    </div>
+    <p><strong>Source image:</strong> <a href="https://doi.org/10.3390/metabo10010008." target="_blank"> Nichole A. Reisdorph et all, A Perspective and Framework for Developing Sample Type Specific Databases for LC/MS-Based Clinical Metabolomics</a></p>
+
     <li><strong>Ion mode.</strong> Type of ionization used in the metabolomics data acquisition.</li>
-    <li><strong>M/Z Tolerance ppm.</strong> Ppm tolerance used in the MS1 annotation.</li>
-    <li><strong>Adduct positive mode.</strong> Type of positive adduct generated during the metabolomics data acquisition.</li>
-    <li><strong>Adduct negative mode.</strong> Type of negative adduct generated during the metabolomics data acquisition.</li>
+
+    -Positive ionization: Compounds gain a proton (+H+) or other cations (e.g., Na+, K+) during ionization.
+    -Negative ionization: Compounds lose a proton (−H+) or gain an electron during ionization
+    -Neutral: Neutral species are not directly ionized but can be inferred after processing data from positive and/or negative ion modes (e.g., reconstructing mass of neutral species).
+            
+    <li><strong>M/Z Tolerance ppm.</strong> Ppm tolerance used in the MS1 annotation. 15 ppm by default, its reduction reduce the missannotation but also the ratio of annotated metabolite. The ppm error (accuracy) of the MS method should be taken into account for the choice of this parameter. 
+      <strong>Examples:</strong>
+      -Quadrupole Mass Spectrometer > 100 ppm 
+      -Time-of-Flight (TOF) 1-10 ppm
+      -Orbitrap Mass Spectrometer <1 ppm
+      -Fourier-Transform Ion Cyclotron Resonance (FT-ICR) Sub-ppm (as low as 0.1 ppm in optimal conditions) 
+    It means that m/z values coming from Orbitrap Mass Spectrometer could be match with a ppm = 1.</li>
+            
+    <li><strong>Adduct positive mode.</strong> Type of positive adduct generated during the metabolomics data acquisition. This should take into account the solvent used. Available adducts: M+H, M+2H, M+Na, M+NH4, M+H-H2O.</li>
+    <li><strong>Adduct negative mode.</strong> Type of negative adduct generated during the metabolomics data acquisition. This should take into account the solvent used. Available adducts: M-H, M-Cl, M-FA-H, M+NH4, M-H-H2O.</li>
     <li><strong>Adduct neutral mode.</strong> If checked will consider these data as neutral.</li>
-    <li><strong>MS1 files upload.</strong> Button were upload the MS1 annotation (required also for the MS2) with the corresponding input number.</li>
-    <li><strong>Databases MS1.</strong> Databases consulted by the MS1 annotation (By Ceu Mass Mediator).</li>
+    <li><strong>MS1 files upload.</strong> Button were upload the MS1 annotation with the corresponding input number. It is required a column called name including the peak (matched with the one in the metabolomics matrix), mass/charge ration m/z and retention time in minutes (RT_min) and or seconds (RT_sec). </li>
+
+    <div align="center">
+        <img src="https://github.com/IxI-97/IxI-97.github.io/blob/main/Detailed_6?raw=true">
+    </div>
+            
+    <li><strong>Databases MS1.</strong> Databases consulted by the MS1 annotation (By Ceu Mass Mediator). Available databases: HMDB, LipidMaps, Metlin, Kegg.</li>
+    
+    <h4 id="MS1 and  Data Dependent Acquisition (DDA)-MS2 annotation (.mzMl and .mgf files) Untargeted High Resolution Mass Spectrometry (HRMS) data.">MS2:</h4>
+    <p> This option supports MS1 and MS2 annotation, where users can upload MS1 files containing mass-to-charge ratio (m/z) and retention type. The retention time is not used directly in the ms1 annotation but only copy pasted in the results. This analysis allows annotations based only on the m/z of the metabolites. Then, the MS2 (containing the fragmentation spectra of the metabolites) is matched with the databases to retrieve a more confident annotation.(called annotation of Level 2). </p>        
+        
+            
     <li><strong>mz match MS1/2.</strong> Mass charge ratio tolerance for the match between MS1 annotation and the fragmentation spectra MS2 provided within the .mzml or .mgf files.</li>
     <li><strong>RT match MS1/2.</strong> Retention time tolerance for the match between MS1 annotation and the fragmentation spectra MS2 provided within the .mzml or .mgf files.</li>
     <li><strong>Column.</strong> Type of column used in the liquid chromatography.</li>

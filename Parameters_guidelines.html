@@ -706,9 +706,12 @@
     <br>
 
     <h3 id="MOFA">Advanced options interface (MOFA section):</h3>
+    <h4 id="MOFA_options">MOFA parameters</h4>
     <li><strong>Max iteration.</strong> Maximum number of MOFA iterations in the model training.</li>
     <li><strong>Convergence mode.</strong> Speed to train the MOFA model. The longer the more accurate.</li>
     <li><strong>Threshold contribution weight.</strong> Threshold to isolate the top MOFA factor contributors. Among the 5% top percent contributors (prefiltered by BiomiX). The contributors are normalized based on the highest contributor, resulting in scores ranging from 0 to 1. The user can define a contribution threshold to reduce the number of contributors to examine; this threshold is set to 0.5 by default.</li>
+
+    <h4 id="MOFA_interpretation">Discriminant MOFA factors interpretation</h4>
     <li><strong>Type of research (Bibliography).</strong> The type of document where the contributors will be researched in Pubmed. Abstract/Title or Text word.</li>
     <li><strong>N° articles (Bibliography).</strong> Number of articles consulted by BiomiX to select articles related to the significant factors. Attention, Pubmed server has a max number of request and the research of too many contributors in too many articles can drive the request interruption with the server. In this case reduce the number of articles consulted or number of contributors researched.There are 300 articles retrived by default.</li>
     <li><strong>N° top contributors (Bibliography).</strong> Top contributors of each omics researched in the PubMed abstracts. Ten contributors are selected by default</li>

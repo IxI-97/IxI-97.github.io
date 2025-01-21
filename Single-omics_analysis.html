@@ -101,9 +101,19 @@
 
     <h3 id="Preview-QC">Preview-QC visualisation</h3>
     <p>If the preview-QC is selected within an omics input slot, a shiny interface is opened to visualize the data. The sections include:</p>
-    <li><strong>Plot section:</strong> includes the scatter plot visualization among the top 50 variables with high-variance, PCA, UMAP, correlation heatmap, and the variables values distribution within the sample</li>
+    <li><strong>Plot section:</strong> It includes the top 50 high-variance variables scatter plots and PCA, UMAP, and correlation heatmaps. <br />
+    The data can be transformed or normalized by:<br />
+    - Logaritmic transformation
+    - Median Centralization
+    - Mean Centralization
+    - Z-score normalization
+    - Median absolute deviation (MAD) normalization
+    - Quantile normalization
+    - Loess normalization
+    - Variance stabilizing transformation (VST)
+    </li>
     <li><strong>Data Table section:</strong> Shows the matrix table</li>
-    <li><strong>Outliers section:</strong> includes a filtering to remove the selected percentage of variables with higher variance and a outlier identifier PCA-based. </li>
+    <li><strong>Outliers section:</strong> includes filtering to remove the selected percentage of variables with higher variance and an outlier identifier PCA-based. </li>
     <li><strong>Download section:</strong> the transformed data can be downloaded here</li>
 
     
